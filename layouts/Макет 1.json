@@ -5,43 +5,7 @@
 			"name": "Слой 0",
 			"overriden": 0,
 			"subLayers": [],
-			"instances": [
-				{
-					"type": "Кнопка",
-					"properties": {
-						"type": "button",
-						"text": "OK",
-						"tooltip": "",
-						"initially-visible": true,
-						"enabled": true,
-						"auto-font-size": true,
-						"checked": false,
-						"id": "",
-						"class": ""
-					},
-					"uid": 2,
-					"sid": 953872014115583,
-					"tags": "",
-					"instanceVariables": {},
-					"behaviors": {},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 1673,
-						"y": 834,
-						"width": 1150,
-						"height": 750,
-						"originX": 0,
-						"originY": 0,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						]
-					}
-				}
-			],
+			"instances": [],
 			"sid": 998321512369431,
 			"effectTypes": [],
 			"isInitiallyVisible": true,
