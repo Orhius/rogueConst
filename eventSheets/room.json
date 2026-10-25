@@ -396,12 +396,22 @@
 			"sid": 261596617565254
 		},
 		{
+			"eventType": "variable",
+			"name": "NewRoom",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 780003115096916
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 421442015583932
+					"sid": 154701424419656
 				}
 			],
 			"actions": [
@@ -412,16 +422,29 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 871821533212629,
+					"sid": 846075530710519,
 					"parameters": {
 						"variable": "RoomKey",
 						"value": "RoomX & \",\" & RoomY"
 					}
 				},
 				{
+					"type": "comment",
+					"text": "NewRoom = 1, если игрок здесь ещё не был (у посещённых комнат шаблон 1-6, у стартовой 0)"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 544343934430235,
+					"parameters": {
+						"variable": "NewRoom",
+						"value": "(Rooms.Get(RoomKey) = 0) & ((RoomX <> 0) | (RoomY <> 0))"
+					}
+				},
+				{
 					"id": "add-key",
 					"objectClass": "Rooms",
-					"sid": 316610558763136,
+					"sid": 562449329748960,
 					"parameters": {
 						"key": "RoomKey",
 						"value": "(Rooms.Get(RoomKey) > 0) ? Rooms.Get(RoomKey) : (((RoomX = 0) & (RoomY = 0)) ? 0 : floor(random(1, 7)))"
@@ -430,7 +453,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 539991670320220,
+					"sid": 168908088011607,
 					"parameters": {
 						"variable": "Cleared",
 						"value": "Rooms.Get(\"c:\" & RoomKey)"
@@ -438,21 +461,21 @@
 				},
 				{
 					"type": "comment",
-					"text": "Страж закрепляется за одной комнатой этажа (BossKey) — первой новой после 3 + 2×этаж зачисток"
+					"text": "Страж появляется только в новой комнате (не сокровищнице) после 3 + 2×этаж зачисток: шанс 35% и +20% за каждую следующую зачистку"
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 467892556315850,
+					"sid": 341214471732025,
 					"parameters": {
 						"variable": "BossKey",
-						"value": "((BossKey = \"\") & (Cleared = 0) & (RoomsCleared >= 3 + Level * 2) & ((RoomX <> 0) | (RoomY <> 0))) ? RoomKey : BossKey"
+						"value": "((BossKey = \"\") & (NewRoom = 1) & (Rooms.Get(RoomKey) <> 6) & (RoomsCleared >= 3 + Level * 2) & (random(100) < 35 + (RoomsCleared - 3 - Level * 2) * 20)) ? RoomKey : BossKey"
 					}
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 158645858548518,
+					"sid": 361909461454860,
 					"parameters": {
 						"variable": "IsBossRoom",
 						"value": "(RoomKey = BossKey) & (BossDead = 0)"
@@ -465,7 +488,7 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 765617501007463,
+					"sid": 274546494773912,
 					"parameters": {
 						"object-to-create": "Stairs",
 						"layer": "0",
@@ -478,7 +501,7 @@
 				{
 					"id": "set-position",
 					"objectClass": "player",
-					"sid": 971001925135843,
+					"sid": 992775365310762,
 					"parameters": {
 						"x": "(EnterDir = 0) ? 1700 : ((EnterDir = 3) ? 220 : 960)",
 						"y": "(EnterDir = 1) ? 880 : ((EnterDir = 2) ? 200 : 540)"
@@ -487,7 +510,7 @@
 				{
 					"id": "flash",
 					"objectClass": "player",
-					"sid": 612766679643806,
+					"sid": 162373039742759,
 					"behaviorType": "Flash",
 					"parameters": {
 						"on-time": "0.1",
@@ -498,7 +521,7 @@
 				{
 					"id": "set-opacity",
 					"objectClass": "door",
-					"sid": 530090725361032,
+					"sid": 996109410000014,
 					"parameters": {
 						"opacity": "(Cleared = 1) ? 100 : 35"
 					}
@@ -506,14 +529,14 @@
 				{
 					"id": "set-layer-background-color",
 					"objectClass": "System",
-					"sid": 930005935042496,
+					"sid": 364756414519601,
 					"parameters": {
 						"layer": "0",
 						"color": "rgbEx255(int(tokenat(\"94|70|52|110\", min(Level - 1, 3), \"|\")), int(tokenat(\"94|58|70|110\", min(Level - 1, 3), \"|\")), int(tokenat(\"94|86|60|80\", min(Level - 1, 3), \"|\")))"
 					}
 				}
 			],
-			"sid": 887471466565596,
+			"sid": 144278485852213,
 			"children": [
 				{
 					"eventType": "block",
@@ -521,7 +544,7 @@
 						{
 							"id": "repeat",
 							"objectClass": "System",
-							"sid": 673686121447361,
+							"sid": 417525046311239,
 							"parameters": {
 								"count": "tokencount(tokenat(Templates, Rooms.Get(RoomKey), \"|\"), \";\")"
 							}
@@ -531,7 +554,7 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 842408591357087,
+							"sid": 219688126991284,
 							"parameters": {
 								"object-to-create": "Rock",
 								"layer": "0",
@@ -542,7 +565,7 @@
 							}
 						}
 					],
-					"sid": 338143275013253
+					"sid": 968855536516317
 				},
 				{
 					"eventType": "block",
@@ -550,7 +573,7 @@
 						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 141604667408544,
+							"sid": 133106383608992,
 							"parameters": {
 								"variable": "Cleared",
 								"comparison": 0,
@@ -560,7 +583,7 @@
 						{
 							"id": "compare-two-values",
 							"objectClass": "System",
-							"sid": 534771940944565,
+							"sid": 647909254688937,
 							"parameters": {
 								"first-value": "abs(RoomX) + abs(RoomY)",
 								"comparison": 4,
@@ -570,7 +593,7 @@
 						{
 							"id": "compare-two-values",
 							"objectClass": "System",
-							"sid": 335765335661829,
+							"sid": 172468193977621,
 							"parameters": {
 								"first-value": "Rooms.Get(RoomKey)",
 								"comparison": 1,
@@ -580,7 +603,7 @@
 						{
 							"id": "repeat",
 							"objectClass": "System",
-							"sid": 936335819926007,
+							"sid": 164110333159024,
 							"parameters": {
 								"count": "min(8, 1 + Level + floor((abs(RoomX) + abs(RoomY)) / 2))"
 							}
@@ -594,7 +617,7 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 169484634995892,
+							"sid": 238848104365753,
 							"parameters": {
 								"object-to-create": "Enemy",
 								"layer": "0",
@@ -607,7 +630,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Enemy",
-							"sid": 648362762703655,
+							"sid": 197609146058167,
 							"parameters": {
 								"instance-variable": "HP",
 								"value": "3 + Level * 3 + floor((abs(RoomX) + abs(RoomY)) / 2)"
@@ -616,7 +639,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Enemy",
-							"sid": 713445679490300,
+							"sid": 520364733257248,
 							"parameters": {
 								"instance-variable": "Kind",
 								"value": "choose(0, 0, ((Level + abs(RoomX) + abs(RoomY)) >= 3) ? 1 : 0, ((Level + abs(RoomX) + abs(RoomY)) >= 4) ? 3 : 0)"
@@ -625,13 +648,13 @@
 						{
 							"id": "set-animation-frame",
 							"objectClass": "Enemy",
-							"sid": 563026599950158,
+							"sid": 194427325337428,
 							"parameters": {
 								"frame-number": "Enemy.Kind"
 							}
 						}
 					],
-					"sid": 323167737215852
+					"sid": 597997258994435
 				},
 				{
 					"eventType": "block",
@@ -639,7 +662,7 @@
 						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 273389529930851,
+							"sid": 697520019992979,
 							"parameters": {
 								"variable": "IsBossRoom",
 								"comparison": 0,
@@ -655,7 +678,7 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 451798149759602,
+							"sid": 608434037642673,
 							"parameters": {
 								"object-to-create": "Enemy",
 								"layer": "0",
@@ -668,7 +691,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Enemy",
-							"sid": 786316624761021,
+							"sid": 907040950849351,
 							"parameters": {
 								"instance-variable": "HP",
 								"value": "40 + Level * 30"
@@ -677,7 +700,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Enemy",
-							"sid": 610007046535602,
+							"sid": 833652685010841,
 							"parameters": {
 								"instance-variable": "Kind",
 								"value": "2"
@@ -686,7 +709,7 @@
 						{
 							"id": "set-animation-frame",
 							"objectClass": "Enemy",
-							"sid": 192493111435621,
+							"sid": 163625340210533,
 							"parameters": {
 								"frame-number": "2"
 							}
@@ -694,13 +717,46 @@
 						{
 							"id": "set-scale",
 							"objectClass": "Enemy",
-							"sid": 698994471655851,
+							"sid": 868864987425527,
 							"parameters": {
 								"scale": "2.2"
 							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "Msg",
+							"sid": 890852241745287,
+							"parameters": {
+								"text": "\"Страж этажа!\""
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Msg",
+							"sid": 383182629997001,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 173478433935452,
+							"parameters": {
+								"seconds": "2",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Msg",
+							"sid": 720551474215448,
+							"parameters": {
+								"visibility": "invisible"
+							}
 						}
 					],
-					"sid": 992131504292270
+					"sid": 281987730638914
 				},
 				{
 					"eventType": "block",
@@ -708,7 +764,7 @@
 						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 140937629166747,
+							"sid": 587727848899313,
 							"parameters": {
 								"variable": "Cleared",
 								"comparison": 0,
@@ -718,7 +774,7 @@
 						{
 							"id": "compare-two-values",
 							"objectClass": "System",
-							"sid": 177841554692934,
+							"sid": 498909688393560,
 							"parameters": {
 								"first-value": "Rooms.Get(RoomKey)",
 								"comparison": 0,
@@ -734,7 +790,7 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 315338482278166,
+							"sid": 233527217058359,
 							"parameters": {
 								"object-to-create": "Pickup",
 								"layer": "0",
@@ -747,7 +803,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Pickup",
-							"sid": 697430891865575,
+							"sid": 603839108103996,
 							"parameters": {
 								"instance-variable": "Kind",
 								"value": "choose(1, 2, 3)"
@@ -756,7 +812,7 @@
 						{
 							"id": "set-animation-frame",
 							"objectClass": "Pickup",
-							"sid": 315608906459226,
+							"sid": 746084833557165,
 							"parameters": {
 								"frame-number": "Pickup.Kind"
 							}
@@ -764,7 +820,7 @@
 						{
 							"id": "set-text",
 							"objectClass": "Msg",
-							"sid": 224807768366412,
+							"sid": 623163009395261,
 							"parameters": {
 								"text": "\"Сокровищница!\""
 							}
@@ -772,7 +828,7 @@
 						{
 							"id": "set-visible",
 							"objectClass": "Msg",
-							"sid": 360496926084193,
+							"sid": 863876602647388,
 							"parameters": {
 								"visibility": "visible"
 							}
@@ -780,7 +836,7 @@
 						{
 							"id": "wait",
 							"objectClass": "System",
-							"sid": 440383915027060,
+							"sid": 859363263016374,
 							"parameters": {
 								"seconds": "2",
 								"use-timescale": true
@@ -789,13 +845,13 @@
 						{
 							"id": "set-visible",
 							"objectClass": "Msg",
-							"sid": 538858783574231,
+							"sid": 637804964570840,
 							"parameters": {
 								"visibility": "invisible"
 							}
 						}
 					],
-					"sid": 717814949977103
+					"sid": 954134090875239
 				}
 			]
 		},
@@ -805,7 +861,7 @@
 				{
 					"id": "every-tick",
 					"objectClass": "System",
-					"sid": 629188348202264
+					"sid": 426023003148165
 				}
 			],
 			"actions": [
@@ -816,7 +872,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 206683719915407,
+					"sid": 352689419216702,
 					"parameters": {
 						"variable": "MoveX",
 						"value": "0"
@@ -825,7 +881,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 358854064972778,
+					"sid": 533998088615219,
 					"parameters": {
 						"variable": "MoveY",
 						"value": "0"
@@ -834,7 +890,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 179648009516738,
+					"sid": 885210454564835,
 					"parameters": {
 						"variable": "AimX",
 						"value": "0"
@@ -843,7 +899,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 103572527230845,
+					"sid": 329307187239095,
 					"parameters": {
 						"variable": "AimY",
 						"value": "0"
@@ -856,7 +912,7 @@
 				{
 					"id": "set-default-controls",
 					"objectClass": "Enemy",
-					"sid": 520604853332702,
+					"sid": 356684596207989,
 					"behaviorType": "Walk",
 					"parameters": {
 						"default-controls": false
@@ -865,7 +921,7 @@
 				{
 					"id": "set-max-speed",
 					"objectClass": "Enemy",
-					"sid": 146086518169651,
+					"sid": 368396024753607,
 					"behaviorType": "Walk",
 					"parameters": {
 						"max-speed": "max(1, ((Enemy.Kind = 3) ? ((sin(time * 200 + Enemy.UID * 57) > 0.8) ? 750 : 20) : (((Enemy.Kind = 0) ? (200 + Level * 25) : ((Enemy.Kind = 1) ? 60 : 130)) * max(0.1, sin(time * 300 + Enemy.UID * 57)))))"
@@ -874,7 +930,7 @@
 				{
 					"id": "set-vector-x",
 					"objectClass": "Enemy",
-					"sid": 178663978893784,
+					"sid": 888081706361251,
 					"behaviorType": "Walk",
 					"parameters": {
 						"vector-x": "cos(angle(Enemy.X, Enemy.Y, player.X, player.Y)) * ((Enemy.Kind = 3) ? ((sin(time * 200 + Enemy.UID * 57) > 0.8) ? 750 : 20) : (((Enemy.Kind = 0) ? (200 + Level * 25) : ((Enemy.Kind = 1) ? 60 : 130)) * max(0.1, sin(time * 300 + Enemy.UID * 57))))"
@@ -883,7 +939,7 @@
 				{
 					"id": "set-vector-y",
 					"objectClass": "Enemy",
-					"sid": 161940793789595,
+					"sid": 594187797978666,
 					"behaviorType": "Walk",
 					"parameters": {
 						"vector-y": "sin(angle(Enemy.X, Enemy.Y, player.X, player.Y)) * ((Enemy.Kind = 3) ? ((sin(time * 200 + Enemy.UID * 57) > 0.8) ? 750 : 20) : (((Enemy.Kind = 0) ? (200 + Level * 25) : ((Enemy.Kind = 1) ? 60 : 130)) * max(0.1, sin(time * 300 + Enemy.UID * 57))))"
@@ -896,7 +952,7 @@
 				{
 					"id": "move-at-angle",
 					"objectClass": "Shot",
-					"sid": 224898365523645,
+					"sid": 122721251902021,
 					"parameters": {
 						"angle": "Shot.Angle",
 						"distance": "((Shot.Hostile = 1) ? (260 + Level * 30) : 900) * dt"
@@ -909,7 +965,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 963142025680748,
+					"sid": 589514947713618,
 					"parameters": {
 						"variable": "FireCD",
 						"value": "max(0, FireCD - dt)"
@@ -918,7 +974,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 410579907940269,
+					"sid": 666126579715879,
 					"parameters": {
 						"variable": "DashT",
 						"value": "max(0, DashT - dt)"
@@ -927,7 +983,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 430090766491005,
+					"sid": 174260845431513,
 					"parameters": {
 						"variable": "DashCD",
 						"value": "max(0, DashCD - dt)"
@@ -936,7 +992,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 988987276184437,
+					"sid": 123526481160334,
 					"parameters": {
 						"variable": "BuffTime",
 						"value": "max(0, BuffTime - dt)"
@@ -945,7 +1001,7 @@
 				{
 					"id": "set-max-speed",
 					"objectClass": "player",
-					"sid": 957352804115109,
+					"sid": 726577290069353,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"max-speed": "(DashT > 0) ? 1300 : (Speed + ((BuffType = 2) & (BuffTime > 0)) * 200)"
@@ -954,7 +1010,7 @@
 				{
 					"id": "set-text",
 					"objectClass": "HUD",
-					"sid": 605852657928996,
+					"sid": 392457224684319,
 					"parameters": {
 						"text": "\"HP: \" & HP & \"/\" & MaxHP & \"   Ур. \" & PlayerLvl & \" (\" & XP & \"/\" & XPNeed & \")   Урон: \" & Damage & \"   Этаж \" & Level & \": \" & tokenat(FloorNames, min(Level - 1, 3), \"|\") & \"   Убито: \" & Kills & ((BuffTime > 0) ? (\"   \" & tokenat(\"Ярость|Стремительность\", BuffType - 1, \"|\") & \" \" & ceil(BuffTime) & \"с\") : \"\") & newline & \"WASD — ходьба, стрелки — стрельба, Пробел — рывок\""
 					}
@@ -966,7 +1022,7 @@
 				{
 					"id": "set-width",
 					"objectClass": "player",
-					"sid": 533741203057360,
+					"sid": 321612463054554,
 					"parameters": {
 						"width": "(AimX <> 0) ? ((AimX < 0) ? -95 : 95) : ((MoveX <> 0) ? ((MoveX < 0) ? -95 : 95) : player.Width)"
 					}
@@ -974,7 +1030,7 @@
 				{
 					"id": "set-position",
 					"objectClass": "Blade",
-					"sid": 330357090998018,
+					"sid": 516246127214049,
 					"parameters": {
 						"x": "player.X + cos(time * 240 + Blade.IID * 360 / max(1, Blade.Count)) * 130",
 						"y": "player.Y + sin(time * 240 + Blade.IID * 360 / max(1, Blade.Count)) * 130"
@@ -983,7 +1039,7 @@
 				{
 					"id": "set-angle",
 					"objectClass": "Blade",
-					"sid": 447724939534109,
+					"sid": 372665572968706,
 					"parameters": {
 						"angle": "time * 240 + Blade.IID * 360 / max(1, Blade.Count) + 90"
 					}
@@ -995,15 +1051,15 @@
 				{
 					"id": "move-to-top",
 					"objectClass": "HUD",
-					"sid": 132728761210334
+					"sid": 204199895237332
 				},
 				{
 					"id": "move-to-top",
 					"objectClass": "Msg",
-					"sid": 799435104056291
+					"sid": 739911974569031
 				}
 			],
-			"sid": 347267542463098
+			"sid": 186518481982893
 		},
 		{
 			"eventType": "block",
@@ -1011,7 +1067,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 663042356285094,
+					"sid": 156758197614426,
 					"parameters": {
 						"key": 87
 					}
@@ -1025,7 +1081,7 @@
 				{
 					"id": "simulate-control",
 					"objectClass": "player",
-					"sid": 366281271726743,
+					"sid": 779232824871445,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"control": "up"
@@ -1034,14 +1090,14 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 499905509987812,
+					"sid": 174650357919573,
 					"parameters": {
 						"variable": "MoveY",
 						"value": "-1"
 					}
 				}
 			],
-			"sid": 829509134868586
+			"sid": 211570860879640
 		},
 		{
 			"eventType": "block",
@@ -1049,7 +1105,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 614992088739410,
+					"sid": 624360556745440,
 					"parameters": {
 						"key": 65
 					}
@@ -1063,7 +1119,7 @@
 				{
 					"id": "simulate-control",
 					"objectClass": "player",
-					"sid": 960996674835995,
+					"sid": 820695215164520,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"control": "left"
@@ -1072,14 +1128,14 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 187053399584697,
+					"sid": 317814296744372,
 					"parameters": {
 						"variable": "MoveX",
 						"value": "-1"
 					}
 				}
 			],
-			"sid": 764446399719629
+			"sid": 262285326058782
 		},
 		{
 			"eventType": "block",
@@ -1087,7 +1143,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 986694563572336,
+					"sid": 330504571121171,
 					"parameters": {
 						"key": 83
 					}
@@ -1101,7 +1157,7 @@
 				{
 					"id": "simulate-control",
 					"objectClass": "player",
-					"sid": 833398188044596,
+					"sid": 213715610602657,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"control": "down"
@@ -1110,14 +1166,14 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 984636182308458,
+					"sid": 618297189837966,
 					"parameters": {
 						"variable": "MoveY",
 						"value": "1"
 					}
 				}
 			],
-			"sid": 222784237208326
+			"sid": 123367266453701
 		},
 		{
 			"eventType": "block",
@@ -1125,7 +1181,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 641861717347905,
+					"sid": 379830559195257,
 					"parameters": {
 						"key": 68
 					}
@@ -1139,7 +1195,7 @@
 				{
 					"id": "simulate-control",
 					"objectClass": "player",
-					"sid": 582464191395027,
+					"sid": 321999301335764,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"control": "right"
@@ -1148,14 +1204,14 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 898335474010421,
+					"sid": 659831087827178,
 					"parameters": {
 						"variable": "MoveX",
 						"value": "1"
 					}
 				}
 			],
-			"sid": 572064701452547
+			"sid": 504187743826453
 		},
 		{
 			"eventType": "block",
@@ -1163,7 +1219,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 986416284972139,
+					"sid": 838287821316565,
 					"parameters": {
 						"key": 37
 					}
@@ -1177,14 +1233,14 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 788589758031552,
+					"sid": 741356847215200,
 					"parameters": {
 						"variable": "AimX",
 						"value": "-1"
 					}
 				}
 			],
-			"sid": 653523787435100
+			"sid": 104214221996241
 		},
 		{
 			"eventType": "block",
@@ -1192,7 +1248,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 995869358088285,
+					"sid": 381669916274402,
 					"parameters": {
 						"key": 39
 					}
@@ -1206,14 +1262,14 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 871108025344298,
+					"sid": 483472122170419,
 					"parameters": {
 						"variable": "AimX",
 						"value": "1"
 					}
 				}
 			],
-			"sid": 386006034717213
+			"sid": 177133052838927
 		},
 		{
 			"eventType": "block",
@@ -1221,7 +1277,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 993807257233761,
+					"sid": 318624526131834,
 					"parameters": {
 						"key": 38
 					}
@@ -1235,14 +1291,14 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 193186776577945,
+					"sid": 897284460897069,
 					"parameters": {
 						"variable": "AimY",
 						"value": "-1"
 					}
 				}
 			],
-			"sid": 387714092467955
+			"sid": 483557358474183
 		},
 		{
 			"eventType": "block",
@@ -1250,7 +1306,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 408627212121184,
+					"sid": 752434598302020,
 					"parameters": {
 						"key": 40
 					}
@@ -1264,14 +1320,14 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 362958332310686,
+					"sid": 410992645693227,
 					"parameters": {
 						"variable": "AimY",
 						"value": "1"
 					}
 				}
 			],
-			"sid": 193566504324366
+			"sid": 479140601866541
 		},
 		{
 			"eventType": "block",
@@ -1279,7 +1335,7 @@
 				{
 					"id": "compare-two-values",
 					"objectClass": "System",
-					"sid": 591361578933799,
+					"sid": 379718296144314,
 					"parameters": {
 						"first-value": "(AimX <> 0) | (AimY <> 0)",
 						"comparison": 0,
@@ -1289,7 +1345,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 639745966329064,
+					"sid": 100641599652316,
 					"parameters": {
 						"variable": "FireCD",
 						"comparison": 3,
@@ -1299,7 +1355,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 682576840719248,
+					"sid": 833242840724340,
 					"parameters": {
 						"variable": "Choosing",
 						"comparison": 0,
@@ -1309,7 +1365,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 162170941873837,
+					"sid": 798338017193903,
 					"parameters": {
 						"variable": "RunOver",
 						"comparison": 0,
@@ -1325,7 +1381,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 655102163273441,
+					"sid": 239224907705676,
 					"parameters": {
 						"variable": "LastAim",
 						"value": "angle(0, 0, AimX, AimY)"
@@ -1334,14 +1390,14 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 116992173232452,
+					"sid": 769763509817246,
 					"parameters": {
 						"variable": "FireCD",
 						"value": "FireDelay / (((BuffType = 1) & (BuffTime > 0)) ? 1.5 : 1)"
 					}
 				}
 			],
-			"sid": 285770568962868,
+			"sid": 443121467168213,
 			"children": [
 				{
 					"eventType": "block",
@@ -1349,7 +1405,7 @@
 						{
 							"id": "repeat",
 							"objectClass": "System",
-							"sid": 455005275278033,
+							"sid": 369359856925051,
 							"parameters": {
 								"count": "Shots"
 							}
@@ -1359,7 +1415,7 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 211547654692733,
+							"sid": 947984780205019,
 							"parameters": {
 								"object-to-create": "Shot",
 								"layer": "0",
@@ -1372,7 +1428,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Shot",
-							"sid": 268822236612443,
+							"sid": 615994485231503,
 							"parameters": {
 								"instance-variable": "Hostile",
 								"value": "0"
@@ -1381,7 +1437,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Shot",
-							"sid": 576829778080221,
+							"sid": 629464407301618,
 							"parameters": {
 								"instance-variable": "Pierce",
 								"value": "PierceLvl"
@@ -1390,7 +1446,7 @@
 						{
 							"id": "set-animation-frame",
 							"objectClass": "Shot",
-							"sid": 632012631403938,
+							"sid": 176886387055053,
 							"parameters": {
 								"frame-number": "0"
 							}
@@ -1398,13 +1454,13 @@
 						{
 							"id": "set-angle",
 							"objectClass": "Shot",
-							"sid": 972539427076868,
+							"sid": 727161964500671,
 							"parameters": {
 								"angle": "LastAim + (loopindex - (Shots - 1) / 2) * 10"
 							}
 						}
 					],
-					"sid": 998662282195997
+					"sid": 145250654526283
 				}
 			]
 		},
@@ -1414,7 +1470,7 @@
 				{
 					"id": "on-collision-with-another-object",
 					"objectClass": "Shot",
-					"sid": 228971546102360,
+					"sid": 879157009352423,
 					"parameters": {
 						"object": "Rock"
 					}
@@ -1422,7 +1478,7 @@
 				{
 					"id": "on-collision-with-another-object",
 					"objectClass": "Shot",
-					"sid": 827324519465619,
+					"sid": 578136609030297,
 					"parameters": {
 						"object": "wall"
 					}
@@ -1432,10 +1488,10 @@
 				{
 					"id": "destroy",
 					"objectClass": "Shot",
-					"sid": 387594468497061
+					"sid": 573511688950631
 				}
 			],
-			"sid": 795717742347082,
+			"sid": 876099305133179,
 			"isOrBlock": true
 		},
 		{
@@ -1444,7 +1500,7 @@
 				{
 					"id": "on-collision-with-another-object",
 					"objectClass": "Shot",
-					"sid": 655126075085597,
+					"sid": 892585653957508,
 					"parameters": {
 						"object": "Enemy"
 					}
@@ -1452,7 +1508,7 @@
 				{
 					"id": "compare-instance-variable",
 					"objectClass": "Shot",
-					"sid": 805017627257243,
+					"sid": 808580071767919,
 					"parameters": {
 						"instance-variable": "Hostile",
 						"comparison": 0,
@@ -1464,7 +1520,7 @@
 				{
 					"id": "subtract-from-instvar",
 					"objectClass": "Enemy",
-					"sid": 367618917161332,
+					"sid": 533928560473040,
 					"parameters": {
 						"instance-variable": "HP",
 						"value": "Damage * (((BuffType = 1) & (BuffTime > 0)) ? 1.5 : 1) * ((random(100) < Crit) ? 2 : 1)"
@@ -1473,7 +1529,7 @@
 				{
 					"id": "flash",
 					"objectClass": "Enemy",
-					"sid": 893335885516439,
+					"sid": 222037888459608,
 					"behaviorType": "Flash",
 					"parameters": {
 						"on-time": "0.05",
@@ -1484,14 +1540,14 @@
 				{
 					"id": "subtract-from-instvar",
 					"objectClass": "Shot",
-					"sid": 595205321013835,
+					"sid": 511812872659876,
 					"parameters": {
 						"instance-variable": "Pierce",
 						"value": "1"
 					}
 				}
 			],
-			"sid": 781505485834726,
+			"sid": 819371836609078,
 			"children": [
 				{
 					"eventType": "block",
@@ -1499,7 +1555,7 @@
 						{
 							"id": "compare-instance-variable",
 							"objectClass": "Shot",
-							"sid": 824960073712057,
+							"sid": 117240094348120,
 							"parameters": {
 								"instance-variable": "Pierce",
 								"comparison": 2,
@@ -1511,10 +1567,10 @@
 						{
 							"id": "destroy",
 							"objectClass": "Shot",
-							"sid": 363452366416289
+							"sid": 356564152389589
 						}
 					],
-					"sid": 152728532070545
+					"sid": 980000560400130
 				}
 			]
 		},
@@ -1524,7 +1580,7 @@
 				{
 					"id": "compare-instance-variable",
 					"objectClass": "Enemy",
-					"sid": 932176068433754,
+					"sid": 425672253873563,
 					"parameters": {
 						"instance-variable": "HP",
 						"comparison": 3,
@@ -1534,7 +1590,7 @@
 				{
 					"id": "compare-two-values",
 					"objectClass": "System",
-					"sid": 481290308099627,
+					"sid": 373957273939111,
 					"parameters": {
 						"first-value": "random(100)",
 						"comparison": 2,
@@ -1550,7 +1606,7 @@
 				{
 					"id": "spawn-another-object",
 					"objectClass": "Enemy",
-					"sid": 292795329113252,
+					"sid": 122726581291807,
 					"parameters": {
 						"object": "Pickup",
 						"layer": "0",
@@ -1562,7 +1618,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Pickup",
-					"sid": 830306461355060,
+					"sid": 186933862238125,
 					"parameters": {
 						"instance-variable": "Kind",
 						"value": "choose(0, 0, 4, 5)"
@@ -1571,13 +1627,13 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "Pickup",
-					"sid": 481456640611094,
+					"sid": 260095605880098,
 					"parameters": {
 						"frame-number": "Pickup.Kind"
 					}
 				}
 			],
-			"sid": 605155140948783
+			"sid": 519212927999445
 		},
 		{
 			"eventType": "block",
@@ -1585,7 +1641,7 @@
 				{
 					"id": "compare-instance-variable",
 					"objectClass": "Enemy",
-					"sid": 842127772487744,
+					"sid": 195762970357739,
 					"parameters": {
 						"instance-variable": "HP",
 						"comparison": 3,
@@ -1601,7 +1657,7 @@
 				{
 					"id": "spawn-another-object",
 					"objectClass": "Enemy",
-					"sid": 532258276326972,
+					"sid": 289045025780569,
 					"parameters": {
 						"object": "Gem",
 						"layer": "0",
@@ -1613,7 +1669,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Gem",
-					"sid": 543634135589937,
+					"sid": 149066307927726,
 					"parameters": {
 						"instance-variable": "Value",
 						"value": "(Enemy.Kind = 2) ? 10 : 1"
@@ -1622,7 +1678,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 641093892165801,
+					"sid": 818295354742030,
 					"parameters": {
 						"variable": "Kills",
 						"value": "1"
@@ -1631,10 +1687,10 @@
 				{
 					"id": "destroy",
 					"objectClass": "Enemy",
-					"sid": 396028136000747
+					"sid": 948418566245279
 				}
 			],
-			"sid": 204288234127721
+			"sid": 487370025206037
 		},
 		{
 			"eventType": "block",
@@ -1642,7 +1698,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 561981727306669,
+					"sid": 945859228775827,
 					"parameters": {
 						"variable": "Cleared",
 						"comparison": 0,
@@ -1652,7 +1708,7 @@
 				{
 					"id": "compare-two-values",
 					"objectClass": "System",
-					"sid": 863719457757842,
+					"sid": 741459744370493,
 					"parameters": {
 						"first-value": "Enemy.Count",
 						"comparison": 0,
@@ -1668,7 +1724,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 604618126376298,
+					"sid": 703894523833350,
 					"parameters": {
 						"variable": "Cleared",
 						"value": "1"
@@ -1677,16 +1733,16 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 394514706030580,
+					"sid": 122342812791215,
 					"parameters": {
 						"variable": "BossDead",
 						"value": "max(BossDead, IsBossRoom)"
 					}
 				},
 				{
-					"id": "set-key",
+					"id": "add-key",
 					"objectClass": "Rooms",
-					"sid": 182756318616688,
+					"sid": 619048776487742,
 					"parameters": {
 						"key": "\"c:\" & RoomKey",
 						"value": "1"
@@ -1695,7 +1751,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 339549911199949,
+					"sid": 154808967461760,
 					"parameters": {
 						"variable": "RoomsCleared",
 						"value": "1"
@@ -1704,13 +1760,13 @@
 				{
 					"id": "set-opacity",
 					"objectClass": "door",
-					"sid": 197645527678873,
+					"sid": 528465069331161,
 					"parameters": {
 						"opacity": "100"
 					}
 				}
 			],
-			"sid": 259655958113528,
+			"sid": 974451228470532,
 			"children": [
 				{
 					"eventType": "block",
@@ -1718,7 +1774,7 @@
 						{
 							"id": "compare-two-values",
 							"objectClass": "System",
-							"sid": 622374238402025,
+							"sid": 403714479576650,
 							"parameters": {
 								"first-value": "random(100)",
 								"comparison": 2,
@@ -1728,7 +1784,7 @@
 						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 702734974268405,
+							"sid": 574488210102729,
 							"parameters": {
 								"variable": "IsBossRoom",
 								"comparison": 0,
@@ -1744,7 +1800,7 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 949700835396058,
+							"sid": 845823945582201,
 							"parameters": {
 								"object-to-create": "Pickup",
 								"layer": "0",
@@ -1757,7 +1813,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Pickup",
-							"sid": 612501670572294,
+							"sid": 539254124427949,
 							"parameters": {
 								"instance-variable": "Kind",
 								"value": "choose(1, 2, 3, 4, 5)"
@@ -1766,13 +1822,13 @@
 						{
 							"id": "set-animation-frame",
 							"objectClass": "Pickup",
-							"sid": 264895483995746,
+							"sid": 118749035594924,
 							"parameters": {
 								"frame-number": "Pickup.Kind"
 							}
 						}
 					],
-					"sid": 114970881792159
+					"sid": 759896562369113
 				},
 				{
 					"eventType": "block",
@@ -1780,7 +1836,7 @@
 						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 656746844795283,
+							"sid": 974064355829679,
 							"parameters": {
 								"variable": "IsBossRoom",
 								"comparison": 0,
@@ -1792,7 +1848,7 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 940487946451604,
+							"sid": 198454169579151,
 							"parameters": {
 								"object-to-create": "Stairs",
 								"layer": "0",
@@ -1805,7 +1861,7 @@
 						{
 							"id": "set-text",
 							"objectClass": "Msg",
-							"sid": 459615681282388,
+							"sid": 486545107739413,
 							"parameters": {
 								"text": "\"Страж повержен. Лестница ведёт выше...\""
 							}
@@ -1813,7 +1869,7 @@
 						{
 							"id": "set-visible",
 							"objectClass": "Msg",
-							"sid": 384576137689471,
+							"sid": 121215143418271,
 							"parameters": {
 								"visibility": "visible"
 							}
@@ -1821,7 +1877,7 @@
 						{
 							"id": "wait",
 							"objectClass": "System",
-							"sid": 743348163483253,
+							"sid": 378219441120788,
 							"parameters": {
 								"seconds": "2.5",
 								"use-timescale": true
@@ -1830,13 +1886,13 @@
 						{
 							"id": "set-visible",
 							"objectClass": "Msg",
-							"sid": 816173536869874,
+							"sid": 560257389107511,
 							"parameters": {
 								"visibility": "invisible"
 							}
 						}
 					],
-					"sid": 564191565069507
+					"sid": 362836155266776
 				}
 			]
 		},
@@ -1846,7 +1902,7 @@
 				{
 					"id": "is-overlapping-another-object",
 					"objectClass": "player",
-					"sid": 172130258988521,
+					"sid": 866935225358138,
 					"parameters": {
 						"object": "door"
 					}
@@ -1854,7 +1910,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 810394425126243,
+					"sid": 634852082316722,
 					"parameters": {
 						"variable": "Cleared",
 						"comparison": 0,
@@ -1864,7 +1920,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 989433183790827,
+					"sid": 935911907897825,
 					"parameters": {
 						"variable": "RunOver",
 						"comparison": 0,
@@ -1880,7 +1936,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 536728783023376,
+					"sid": 136521869696122,
 					"parameters": {
 						"variable": "EnterDir",
 						"value": "door.Dir"
@@ -1889,7 +1945,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 478784445266668,
+					"sid": 159671314914892,
 					"parameters": {
 						"variable": "RoomX",
 						"value": "(door.Dir = 3) - (door.Dir = 0)"
@@ -1898,7 +1954,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 359603110738783,
+					"sid": 991856159309444,
 					"parameters": {
 						"variable": "RoomY",
 						"value": "(door.Dir = 2) - (door.Dir = 1)"
@@ -1907,10 +1963,10 @@
 				{
 					"id": "restart-layout",
 					"objectClass": "System",
-					"sid": 762781960816703
+					"sid": 558468316924571
 				}
 			],
-			"sid": 990047827936515
+			"sid": 838967002821308
 		},
 		{
 			"eventType": "block",
@@ -1918,7 +1974,7 @@
 				{
 					"id": "is-overlapping-another-object",
 					"objectClass": "player",
-					"sid": 941849781834120,
+					"sid": 267074531258828,
 					"parameters": {
 						"object": "Stairs"
 					}
@@ -1926,7 +1982,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 837385581567867,
+					"sid": 485625220097008,
 					"parameters": {
 						"variable": "RunOver",
 						"comparison": 0,
@@ -1942,7 +1998,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 397364005321098,
+					"sid": 575726114983874,
 					"parameters": {
 						"variable": "Level",
 						"value": "1"
@@ -1951,12 +2007,12 @@
 				{
 					"id": "clear",
 					"objectClass": "Rooms",
-					"sid": 509453898493566
+					"sid": 979710383328282
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 242958310741978,
+					"sid": 353487013326895,
 					"parameters": {
 						"variable": "RoomX",
 						"value": "0"
@@ -1965,7 +2021,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 378169008429008,
+					"sid": 755874887769161,
 					"parameters": {
 						"variable": "RoomY",
 						"value": "0"
@@ -1974,7 +2030,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 530846679540400,
+					"sid": 216310863918629,
 					"parameters": {
 						"variable": "EnterDir",
 						"value": "-1"
@@ -1983,7 +2039,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 931215270325682,
+					"sid": 823584175513083,
 					"parameters": {
 						"variable": "RoomsCleared",
 						"value": "0"
@@ -1992,7 +2048,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 224654559898856,
+					"sid": 580144530864750,
 					"parameters": {
 						"variable": "BossKey",
 						"value": "\"\""
@@ -2001,7 +2057,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 753945459325985,
+					"sid": 610975068292954,
 					"parameters": {
 						"variable": "BossDead",
 						"value": "0"
@@ -2010,10 +2066,10 @@
 				{
 					"id": "restart-layout",
 					"objectClass": "System",
-					"sid": 302795775589361
+					"sid": 626976560690825
 				}
 			],
-			"sid": 190180115885511
+			"sid": 876213998915666
 		},
 		{
 			"eventType": "block",
@@ -2021,7 +2077,7 @@
 				{
 					"id": "is-overlapping-another-object",
 					"objectClass": "player",
-					"sid": 100671424065582,
+					"sid": 506688142500341,
 					"parameters": {
 						"object": "Pickup"
 					}
@@ -2035,7 +2091,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 841714670081135,
+					"sid": 535217576947996,
 					"parameters": {
 						"variable": "MaxHP",
 						"value": "Pickup.Kind = 3"
@@ -2044,7 +2100,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 370831186970971,
+					"sid": 198109313099687,
 					"parameters": {
 						"variable": "HP",
 						"value": "min(MaxHP, HP + (Pickup.Kind = 0) + (Pickup.Kind = 3))"
@@ -2053,7 +2109,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 744144099164273,
+					"sid": 241263181366191,
 					"parameters": {
 						"variable": "Damage",
 						"value": "Pickup.Kind = 1"
@@ -2062,7 +2118,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 763483160493339,
+					"sid": 761085940068430,
 					"parameters": {
 						"variable": "FireDelay",
 						"value": "(Pickup.Kind = 2) ? max(0.12, FireDelay * 0.88) : FireDelay"
@@ -2071,7 +2127,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 923078095101857,
+					"sid": 349956004934893,
 					"parameters": {
 						"variable": "BuffType",
 						"value": "((Pickup.Kind = 4) | (Pickup.Kind = 5)) ? (Pickup.Kind - 3) : BuffType"
@@ -2080,7 +2136,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 786209550608256,
+					"sid": 688730970005139,
 					"parameters": {
 						"variable": "BuffTime",
 						"value": "((Pickup.Kind = 4) | (Pickup.Kind = 5)) ? 6 : BuffTime"
@@ -2089,7 +2145,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 183852424783903,
+					"sid": 962697991609708,
 					"parameters": {
 						"variable": "Speed",
 						"value": "(Pickup.Kind = 6) * 40"
@@ -2098,7 +2154,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 116486231384403,
+					"sid": 512906460586182,
 					"parameters": {
 						"variable": "Shots",
 						"value": "Pickup.Kind = 7"
@@ -2107,7 +2163,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 725443467079806,
+					"sid": 195806210760455,
 					"parameters": {
 						"variable": "PierceLvl",
 						"value": "Pickup.Kind = 8"
@@ -2116,7 +2172,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 478629301026240,
+					"sid": 679977788082485,
 					"parameters": {
 						"variable": "Blades",
 						"value": "Pickup.Kind = 9"
@@ -2125,7 +2181,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 339450842914746,
+					"sid": 657254793264779,
 					"parameters": {
 						"variable": "Crit",
 						"value": "(Pickup.Kind = 10) * 10"
@@ -2134,7 +2190,7 @@
 				{
 					"id": "set-text",
 					"objectClass": "Msg",
-					"sid": 591764638144414,
+					"sid": 472386347516804,
 					"parameters": {
 						"text": "tokenat(ItemNames, Pickup.Kind, \"|\")"
 					}
@@ -2142,7 +2198,7 @@
 				{
 					"id": "set-visible",
 					"objectClass": "Msg",
-					"sid": 316000753966141,
+					"sid": 439876393501681,
 					"parameters": {
 						"visibility": "visible"
 					}
@@ -2150,12 +2206,12 @@
 				{
 					"id": "destroy",
 					"objectClass": "Pickup",
-					"sid": 305087446562314
+					"sid": 212608485831194
 				},
 				{
 					"id": "wait",
 					"objectClass": "System",
-					"sid": 951719482265233,
+					"sid": 306411591684765,
 					"parameters": {
 						"seconds": "2",
 						"use-timescale": true
@@ -2164,13 +2220,13 @@
 				{
 					"id": "set-visible",
 					"objectClass": "Msg",
-					"sid": 387590377445263,
+					"sid": 770411039334948,
 					"parameters": {
 						"visibility": "invisible"
 					}
 				}
 			],
-			"sid": 722480316772757
+			"sid": 494928630596162
 		},
 		{
 			"eventType": "block",
@@ -2178,7 +2234,7 @@
 				{
 					"id": "is-overlapping-another-object",
 					"objectClass": "player",
-					"sid": 534379952666615,
+					"sid": 874378534017900,
 					"parameters": {
 						"object": "Enemy"
 					}
@@ -2186,14 +2242,14 @@
 				{
 					"id": "is-flashing",
 					"objectClass": "player",
-					"sid": 677176557672834,
+					"sid": 896515688419027,
 					"behaviorType": "Flash",
 					"isInverted": true
 				},
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 748829193438729,
+					"sid": 719434345051596,
 					"parameters": {
 						"variable": "RunOver",
 						"comparison": 0,
@@ -2209,7 +2265,7 @@
 				{
 					"id": "subtract-from-eventvar",
 					"objectClass": "System",
-					"sid": 152063504327724,
+					"sid": 466702521704313,
 					"parameters": {
 						"variable": "HP",
 						"value": "1"
@@ -2218,7 +2274,7 @@
 				{
 					"id": "flash",
 					"objectClass": "player",
-					"sid": 198400407104552,
+					"sid": 643693880440737,
 					"behaviorType": "Flash",
 					"parameters": {
 						"on-time": "0.1",
@@ -2229,7 +2285,7 @@
 				{
 					"id": "shake",
 					"objectClass": "player",
-					"sid": 762470721653505,
+					"sid": 641721292629113,
 					"behaviorType": "СледитьЗа",
 					"parameters": {
 						"magnitude": "12",
@@ -2238,7 +2294,7 @@
 					}
 				}
 			],
-			"sid": 815088878042703
+			"sid": 193078243038102
 		},
 		{
 			"eventType": "block",
@@ -2246,7 +2302,7 @@
 				{
 					"id": "on-collision-with-another-object",
 					"objectClass": "Shot",
-					"sid": 909806276664463,
+					"sid": 967225708664423,
 					"parameters": {
 						"object": "player"
 					}
@@ -2254,7 +2310,7 @@
 				{
 					"id": "compare-instance-variable",
 					"objectClass": "Shot",
-					"sid": 440569445346864,
+					"sid": 486649173992833,
 					"parameters": {
 						"instance-variable": "Hostile",
 						"comparison": 0,
@@ -2264,7 +2320,7 @@
 				{
 					"id": "is-flashing",
 					"objectClass": "player",
-					"sid": 890250487290509,
+					"sid": 520700184484803,
 					"behaviorType": "Flash",
 					"isInverted": true
 				}
@@ -2273,7 +2329,7 @@
 				{
 					"id": "subtract-from-eventvar",
 					"objectClass": "System",
-					"sid": 437375210175470,
+					"sid": 177249986537149,
 					"parameters": {
 						"variable": "HP",
 						"value": "1"
@@ -2282,7 +2338,7 @@
 				{
 					"id": "flash",
 					"objectClass": "player",
-					"sid": 860899181748405,
+					"sid": 666996644237233,
 					"behaviorType": "Flash",
 					"parameters": {
 						"on-time": "0.1",
@@ -2293,7 +2349,7 @@
 				{
 					"id": "shake",
 					"objectClass": "player",
-					"sid": 618860789597785,
+					"sid": 274170371091533,
 					"behaviorType": "СледитьЗа",
 					"parameters": {
 						"magnitude": "12",
@@ -2304,10 +2360,10 @@
 				{
 					"id": "destroy",
 					"objectClass": "Shot",
-					"sid": 998016206608709
+					"sid": 810785427032242
 				}
 			],
-			"sid": 448366279126706
+			"sid": 387156724665166
 		},
 		{
 			"eventType": "block",
@@ -2315,7 +2371,7 @@
 				{
 					"id": "every-x-seconds",
 					"objectClass": "System",
-					"sid": 997845154812988,
+					"sid": 518675760236664,
 					"parameters": {
 						"interval-seconds": "1.5"
 					}
@@ -2323,7 +2379,7 @@
 				{
 					"id": "compare-instance-variable",
 					"objectClass": "Enemy",
-					"sid": 427645537791610,
+					"sid": 666961428892067,
 					"parameters": {
 						"instance-variable": "Kind",
 						"comparison": 0,
@@ -2333,7 +2389,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 263876485227557,
+					"sid": 724984891911247,
 					"parameters": {
 						"variable": "RunOver",
 						"comparison": 0,
@@ -2349,7 +2405,7 @@
 				{
 					"id": "spawn-another-object",
 					"objectClass": "Enemy",
-					"sid": 877687694291615,
+					"sid": 768392397625658,
 					"parameters": {
 						"object": "Shot",
 						"layer": "0",
@@ -2361,7 +2417,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Shot",
-					"sid": 734355658600258,
+					"sid": 528629924720214,
 					"parameters": {
 						"instance-variable": "Hostile",
 						"value": "1"
@@ -2370,7 +2426,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "Shot",
-					"sid": 171678869721966,
+					"sid": 509433165919860,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -2378,13 +2434,13 @@
 				{
 					"id": "set-angle",
 					"objectClass": "Shot",
-					"sid": 209196242317015,
+					"sid": 331582709324778,
 					"parameters": {
 						"angle": "angle(Enemy.X, Enemy.Y, player.X, player.Y)"
 					}
 				}
 			],
-			"sid": 218776065102013
+			"sid": 840828801672482
 		},
 		{
 			"eventType": "block",
@@ -2392,7 +2448,7 @@
 				{
 					"id": "every-x-seconds",
 					"objectClass": "System",
-					"sid": 878346969621455,
+					"sid": 446829414552885,
 					"parameters": {
 						"interval-seconds": "3"
 					}
@@ -2400,7 +2456,7 @@
 				{
 					"id": "compare-instance-variable",
 					"objectClass": "Enemy",
-					"sid": 241151161464464,
+					"sid": 379518458069093,
 					"parameters": {
 						"instance-variable": "Kind",
 						"comparison": 0,
@@ -2410,7 +2466,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 406774076170452,
+					"sid": 622690731562011,
 					"parameters": {
 						"variable": "RunOver",
 						"comparison": 0,
@@ -2426,7 +2482,7 @@
 				{
 					"id": "spawn-another-object",
 					"objectClass": "Enemy",
-					"sid": 603747680692596,
+					"sid": 399328064562499,
 					"parameters": {
 						"object": "Shot",
 						"layer": "0",
@@ -2438,7 +2494,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Shot",
-					"sid": 137313887711486,
+					"sid": 776379758482066,
 					"parameters": {
 						"instance-variable": "Hostile",
 						"value": "1"
@@ -2447,7 +2503,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "Shot",
-					"sid": 405248134363369,
+					"sid": 638444774581975,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -2455,7 +2511,7 @@
 				{
 					"id": "set-angle",
 					"objectClass": "Shot",
-					"sid": 326915538447572,
+					"sid": 381436363761619,
 					"parameters": {
 						"angle": "0 + time * 40"
 					}
@@ -2463,7 +2519,7 @@
 				{
 					"id": "spawn-another-object",
 					"objectClass": "Enemy",
-					"sid": 269235174094198,
+					"sid": 977837571004711,
 					"parameters": {
 						"object": "Shot",
 						"layer": "0",
@@ -2475,7 +2531,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Shot",
-					"sid": 579537662829759,
+					"sid": 282961375050806,
 					"parameters": {
 						"instance-variable": "Hostile",
 						"value": "1"
@@ -2484,7 +2540,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "Shot",
-					"sid": 617723113449010,
+					"sid": 750179208793304,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -2492,7 +2548,7 @@
 				{
 					"id": "set-angle",
 					"objectClass": "Shot",
-					"sid": 209308924049037,
+					"sid": 884475468967879,
 					"parameters": {
 						"angle": "45 + time * 40"
 					}
@@ -2500,7 +2556,7 @@
 				{
 					"id": "spawn-another-object",
 					"objectClass": "Enemy",
-					"sid": 159365290515559,
+					"sid": 822999703795147,
 					"parameters": {
 						"object": "Shot",
 						"layer": "0",
@@ -2512,7 +2568,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Shot",
-					"sid": 675935686257506,
+					"sid": 433485623418947,
 					"parameters": {
 						"instance-variable": "Hostile",
 						"value": "1"
@@ -2521,7 +2577,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "Shot",
-					"sid": 745907475465371,
+					"sid": 631875504826568,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -2529,7 +2585,7 @@
 				{
 					"id": "set-angle",
 					"objectClass": "Shot",
-					"sid": 537318452100214,
+					"sid": 715312094768980,
 					"parameters": {
 						"angle": "90 + time * 40"
 					}
@@ -2537,7 +2593,7 @@
 				{
 					"id": "spawn-another-object",
 					"objectClass": "Enemy",
-					"sid": 573482879668447,
+					"sid": 699578167918213,
 					"parameters": {
 						"object": "Shot",
 						"layer": "0",
@@ -2549,7 +2605,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Shot",
-					"sid": 195378267074141,
+					"sid": 769860644045625,
 					"parameters": {
 						"instance-variable": "Hostile",
 						"value": "1"
@@ -2558,7 +2614,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "Shot",
-					"sid": 457586309036493,
+					"sid": 511712579890430,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -2566,7 +2622,7 @@
 				{
 					"id": "set-angle",
 					"objectClass": "Shot",
-					"sid": 552584683128253,
+					"sid": 533340337469145,
 					"parameters": {
 						"angle": "135 + time * 40"
 					}
@@ -2574,7 +2630,7 @@
 				{
 					"id": "spawn-another-object",
 					"objectClass": "Enemy",
-					"sid": 760827032797818,
+					"sid": 740181785556652,
 					"parameters": {
 						"object": "Shot",
 						"layer": "0",
@@ -2586,7 +2642,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Shot",
-					"sid": 124555434820334,
+					"sid": 184283252793400,
 					"parameters": {
 						"instance-variable": "Hostile",
 						"value": "1"
@@ -2595,7 +2651,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "Shot",
-					"sid": 745992021278004,
+					"sid": 882727223330072,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -2603,7 +2659,7 @@
 				{
 					"id": "set-angle",
 					"objectClass": "Shot",
-					"sid": 721746457293957,
+					"sid": 782156138399869,
 					"parameters": {
 						"angle": "180 + time * 40"
 					}
@@ -2611,7 +2667,7 @@
 				{
 					"id": "spawn-another-object",
 					"objectClass": "Enemy",
-					"sid": 710474276579051,
+					"sid": 654735059135326,
 					"parameters": {
 						"object": "Shot",
 						"layer": "0",
@@ -2623,7 +2679,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Shot",
-					"sid": 752669069715256,
+					"sid": 529440669206044,
 					"parameters": {
 						"instance-variable": "Hostile",
 						"value": "1"
@@ -2632,7 +2688,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "Shot",
-					"sid": 948949826569004,
+					"sid": 691716799733669,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -2640,7 +2696,7 @@
 				{
 					"id": "set-angle",
 					"objectClass": "Shot",
-					"sid": 721127292328695,
+					"sid": 263514648577614,
 					"parameters": {
 						"angle": "225 + time * 40"
 					}
@@ -2648,7 +2704,7 @@
 				{
 					"id": "spawn-another-object",
 					"objectClass": "Enemy",
-					"sid": 390070827957981,
+					"sid": 706212729201576,
 					"parameters": {
 						"object": "Shot",
 						"layer": "0",
@@ -2660,7 +2716,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Shot",
-					"sid": 863391471812309,
+					"sid": 893719011379971,
 					"parameters": {
 						"instance-variable": "Hostile",
 						"value": "1"
@@ -2669,7 +2725,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "Shot",
-					"sid": 389603348447309,
+					"sid": 297794296089342,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -2677,7 +2733,7 @@
 				{
 					"id": "set-angle",
 					"objectClass": "Shot",
-					"sid": 875758720531568,
+					"sid": 888027990173186,
 					"parameters": {
 						"angle": "270 + time * 40"
 					}
@@ -2685,7 +2741,7 @@
 				{
 					"id": "spawn-another-object",
 					"objectClass": "Enemy",
-					"sid": 385752771609638,
+					"sid": 918899246531983,
 					"parameters": {
 						"object": "Shot",
 						"layer": "0",
@@ -2697,7 +2753,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Shot",
-					"sid": 554301517623476,
+					"sid": 397399190038993,
 					"parameters": {
 						"instance-variable": "Hostile",
 						"value": "1"
@@ -2706,7 +2762,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "Shot",
-					"sid": 623361449392985,
+					"sid": 893616763312077,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -2714,13 +2770,13 @@
 				{
 					"id": "set-angle",
 					"objectClass": "Shot",
-					"sid": 871391812103352,
+					"sid": 947732894323228,
 					"parameters": {
 						"angle": "315 + time * 40"
 					}
 				}
 			],
-			"sid": 812135689221684
+			"sid": 932394945212223
 		},
 		{
 			"eventType": "block",
@@ -2728,7 +2784,7 @@
 				{
 					"id": "on-key-pressed",
 					"objectClass": "Keyboard",
-					"sid": 968340000722560,
+					"sid": 291774222535936,
 					"parameters": {
 						"key": 32
 					}
@@ -2736,7 +2792,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 644841371254154,
+					"sid": 297847878305673,
 					"parameters": {
 						"variable": "DashCD",
 						"comparison": 3,
@@ -2746,7 +2802,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 194238712504896,
+					"sid": 998918527240934,
 					"parameters": {
 						"variable": "Choosing",
 						"comparison": 0,
@@ -2756,7 +2812,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 124795576977898,
+					"sid": 113870431006793,
 					"parameters": {
 						"variable": "RunOver",
 						"comparison": 0,
@@ -2772,7 +2828,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 902807042300326,
+					"sid": 252469479555958,
 					"parameters": {
 						"variable": "DashT",
 						"value": "0.15"
@@ -2781,7 +2837,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 515339592148538,
+					"sid": 481553058584044,
 					"parameters": {
 						"variable": "DashCD",
 						"value": "0.7"
@@ -2790,7 +2846,7 @@
 				{
 					"id": "flash",
 					"objectClass": "player",
-					"sid": 890141272950019,
+					"sid": 171558260154545,
 					"behaviorType": "Flash",
 					"parameters": {
 						"on-time": "0.05",
@@ -2801,7 +2857,7 @@
 				{
 					"id": "set-max-speed",
 					"objectClass": "player",
-					"sid": 560420497723872,
+					"sid": 896506600682676,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"max-speed": "1300"
@@ -2810,7 +2866,7 @@
 				{
 					"id": "set-vector-x",
 					"objectClass": "player",
-					"sid": 333775210177247,
+					"sid": 147583137001124,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"vector-x": "1300 * cos(((MoveX <> 0) | (MoveY <> 0)) ? angle(0, 0, MoveX, MoveY) : LastAim)"
@@ -2819,14 +2875,14 @@
 				{
 					"id": "set-vector-y",
 					"objectClass": "player",
-					"sid": 882202015063958,
+					"sid": 470688315956733,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"vector-y": "1300 * sin(((MoveX <> 0) | (MoveY <> 0)) ? angle(0, 0, MoveX, MoveY) : LastAim)"
 					}
 				}
 			],
-			"sid": 865119677163873
+			"sid": 219179158567562
 		},
 		{
 			"eventType": "block",
@@ -2834,7 +2890,7 @@
 				{
 					"id": "compare-two-values",
 					"objectClass": "System",
-					"sid": 887376923557679,
+					"sid": 969076892581252,
 					"parameters": {
 						"first-value": "(HP <= 0) | (Level >= 4)",
 						"comparison": 0,
@@ -2844,7 +2900,7 @@
 				{
 					"id": "trigger-once-while-true",
 					"objectClass": "System",
-					"sid": 588662170710923
+					"sid": 161975526951207
 				}
 			],
 			"actions": [
@@ -2855,7 +2911,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 830731540238242,
+					"sid": 747338632698038,
 					"parameters": {
 						"variable": "RunOver",
 						"value": "1"
@@ -2864,12 +2920,12 @@
 				{
 					"id": "destroy",
 					"objectClass": "Enemy",
-					"sid": 351754499623432
+					"sid": 877549911755035
 				},
 				{
 					"id": "set-text",
 					"objectClass": "Msg",
-					"sid": 840917792300627,
+					"sid": 567639909709183,
 					"parameters": {
 						"text": "((HP <= 0) ? (\"Странник пал на этаже \" & Level) : \"Странник выбрался на свободу!\") & newline & \"Убито врагов: \" & Kills & newline & newline & \"Нажмите R, чтобы возродиться\""
 					}
@@ -2877,7 +2933,7 @@
 				{
 					"id": "set-visible",
 					"objectClass": "Msg",
-					"sid": 518316984309565,
+					"sid": 837167010715673,
 					"parameters": {
 						"visibility": "visible"
 					}
@@ -2885,10 +2941,10 @@
 				{
 					"id": "destroy",
 					"objectClass": "player",
-					"sid": 465399347295815
+					"sid": 155899741766306
 				}
 			],
-			"sid": 971968331270104
+			"sid": 270551578941193
 		},
 		{
 			"eventType": "block",
@@ -2896,7 +2952,7 @@
 				{
 					"id": "on-key-pressed",
 					"objectClass": "Keyboard",
-					"sid": 970996459268222,
+					"sid": 735731338395262,
 					"parameters": {
 						"key": 82
 					}
@@ -2904,7 +2960,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 745557790790528,
+					"sid": 647639395116525,
 					"parameters": {
 						"variable": "RunOver",
 						"comparison": 0,
@@ -2920,12 +2976,12 @@
 				{
 					"id": "clear",
 					"objectClass": "Rooms",
-					"sid": 176774835745830
+					"sid": 177987611444499
 				},
 				{
 					"id": "reset-global-variables",
 					"objectClass": "System",
-					"sid": 159037962959792,
+					"sid": 415526359853177,
 					"parameters": {
 						"reset-static": false
 					}
@@ -2933,10 +2989,10 @@
 				{
 					"id": "restart-layout",
 					"objectClass": "System",
-					"sid": 352889315530310
+					"sid": 895981968833966
 				}
 			],
-			"sid": 428335647112526
+			"sid": 221190314327711
 		},
 		{
 			"eventType": "block",
@@ -2944,7 +3000,7 @@
 				{
 					"id": "compare-two-values",
 					"objectClass": "System",
-					"sid": 555568974657133,
+					"sid": 746199991873885,
 					"parameters": {
 						"first-value": "XP",
 						"comparison": 5,
@@ -2954,7 +3010,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 313763569394544,
+					"sid": 563990626143891,
 					"parameters": {
 						"variable": "Choosing",
 						"comparison": 0,
@@ -2964,7 +3020,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 563733043716741,
+					"sid": 949633561929618,
 					"parameters": {
 						"variable": "RunOver",
 						"comparison": 0,
@@ -2980,7 +3036,7 @@
 				{
 					"id": "subtract-from-eventvar",
 					"objectClass": "System",
-					"sid": 280385696131592,
+					"sid": 865785014985694,
 					"parameters": {
 						"variable": "XP",
 						"value": "XPNeed"
@@ -2989,7 +3045,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 544166603984467,
+					"sid": 659086483124795,
 					"parameters": {
 						"variable": "XPNeed",
 						"value": "5"
@@ -2998,7 +3054,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 854527455184505,
+					"sid": 760411893084150,
 					"parameters": {
 						"variable": "PlayerLvl",
 						"value": "1"
@@ -3007,7 +3063,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 362062537127288,
+					"sid": 904135999249896,
 					"parameters": {
 						"variable": "Opts",
 						"value": "choose(1, 7, 10) & \",\" & choose(2, 8, 9) & \",\" & choose(0, 3, 6)"
@@ -3016,7 +3072,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 464132724317744,
+					"sid": 335621774179848,
 					"parameters": {
 						"variable": "Choosing",
 						"value": "1"
@@ -3025,7 +3081,7 @@
 				{
 					"id": "set-time-scale",
 					"objectClass": "System",
-					"sid": 908572805680090,
+					"sid": 482243086544443,
 					"parameters": {
 						"time-scale": "0"
 					}
@@ -3033,7 +3089,7 @@
 				{
 					"id": "set-text",
 					"objectClass": "Msg",
-					"sid": 646155808998891,
+					"sid": 311915870929553,
 					"parameters": {
 						"text": "\"НОВЫЙ УРОВЕНЬ \" & PlayerLvl & \"! Выбери улучшение:\" & newline & \"1 — \" & tokenat(ItemNames, int(tokenat(Opts, 0, \",\")), \"|\") & newline & \"2 — \" & tokenat(ItemNames, int(tokenat(Opts, 1, \",\")), \"|\") & newline & \"3 — \" & tokenat(ItemNames, int(tokenat(Opts, 2, \",\")), \"|\")"
 					}
@@ -3041,13 +3097,13 @@
 				{
 					"id": "set-visible",
 					"objectClass": "Msg",
-					"sid": 406059377963800,
+					"sid": 584099336142807,
 					"parameters": {
 						"visibility": "visible"
 					}
 				}
 			],
-			"sid": 902627782939940
+			"sid": 272946961734386
 		},
 		{
 			"eventType": "block",
@@ -3055,12 +3111,12 @@
 				{
 					"id": "on-any-key-pressed",
 					"objectClass": "Keyboard",
-					"sid": 457920712743879
+					"sid": 830758991201337
 				},
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 480465225670200,
+					"sid": 250793665104527,
 					"parameters": {
 						"variable": "Choosing",
 						"comparison": 0,
@@ -3070,7 +3126,7 @@
 				{
 					"id": "compare-two-values",
 					"objectClass": "System",
-					"sid": 952971754536091,
+					"sid": 885891342921617,
 					"parameters": {
 						"first-value": "(Keyboard.LastKeyCode >= 49) & (Keyboard.LastKeyCode <= 51)",
 						"comparison": 0,
@@ -3086,7 +3142,7 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 750797049960726,
+					"sid": 510875958914359,
 					"parameters": {
 						"object-to-create": "Pickup",
 						"layer": "0",
@@ -3099,7 +3155,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Pickup",
-					"sid": 146674114321797,
+					"sid": 303802241762917,
 					"parameters": {
 						"instance-variable": "Kind",
 						"value": "int(tokenat(Opts, Keyboard.LastKeyCode - 49, \",\"))"
@@ -3108,7 +3164,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 898374999393334,
+					"sid": 447584053117631,
 					"parameters": {
 						"variable": "Choosing",
 						"value": "0"
@@ -3117,7 +3173,7 @@
 				{
 					"id": "set-time-scale",
 					"objectClass": "System",
-					"sid": 188516219862868,
+					"sid": 342785526041152,
 					"parameters": {
 						"time-scale": "1"
 					}
@@ -3125,13 +3181,13 @@
 				{
 					"id": "set-visible",
 					"objectClass": "Msg",
-					"sid": 222975404503790,
+					"sid": 176410040531396,
 					"parameters": {
 						"visibility": "invisible"
 					}
 				}
 			],
-			"sid": 353201867007168
+			"sid": 447574827349140
 		},
 		{
 			"eventType": "block",
@@ -3139,7 +3195,7 @@
 				{
 					"id": "compare-two-values",
 					"objectClass": "System",
-					"sid": 842470187333205,
+					"sid": 457008465115602,
 					"parameters": {
 						"first-value": "Blade.Count",
 						"comparison": 2,
@@ -3149,7 +3205,7 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 701643856651741,
+					"sid": 171380456351601,
 					"parameters": {
 						"variable": "RunOver",
 						"comparison": 0,
@@ -3165,7 +3221,7 @@
 				{
 					"id": "create-object",
 					"objectClass": "System",
-					"sid": 628484432411598,
+					"sid": 683364778274012,
 					"parameters": {
 						"object-to-create": "Blade",
 						"layer": "0",
@@ -3176,7 +3232,7 @@
 					}
 				}
 			],
-			"sid": 299851610649426
+			"sid": 730332852630768
 		},
 		{
 			"eventType": "block",
@@ -3184,7 +3240,7 @@
 				{
 					"id": "is-overlapping-another-object",
 					"objectClass": "Blade",
-					"sid": 572405367319323,
+					"sid": 130589318965611,
 					"parameters": {
 						"object": "Enemy"
 					}
@@ -3192,7 +3248,7 @@
 				{
 					"id": "is-flashing",
 					"objectClass": "Enemy",
-					"sid": 915631366277154,
+					"sid": 361881762636366,
 					"behaviorType": "Flash",
 					"isInverted": true
 				}
@@ -3201,7 +3257,7 @@
 				{
 					"id": "subtract-from-instvar",
 					"objectClass": "Enemy",
-					"sid": 511263226707652,
+					"sid": 509464334530040,
 					"parameters": {
 						"instance-variable": "HP",
 						"value": "max(1, Damage / 2)"
@@ -3210,7 +3266,7 @@
 				{
 					"id": "flash",
 					"objectClass": "Enemy",
-					"sid": 774828675171146,
+					"sid": 724093556941117,
 					"behaviorType": "Flash",
 					"parameters": {
 						"on-time": "0.05",
@@ -3219,7 +3275,7 @@
 					}
 				}
 			],
-			"sid": 931896691253558
+			"sid": 164911050531461
 		},
 		{
 			"eventType": "block",
@@ -3227,7 +3283,7 @@
 				{
 					"id": "is-overlapping-another-object",
 					"objectClass": "player",
-					"sid": 623083949295811,
+					"sid": 719231733043954,
 					"parameters": {
 						"object": "Gem"
 					}
@@ -3237,7 +3293,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 613194015160257,
+					"sid": 876689141453722,
 					"parameters": {
 						"variable": "XP",
 						"value": "Gem.Value"
@@ -3246,10 +3302,10 @@
 				{
 					"id": "destroy",
 					"objectClass": "Gem",
-					"sid": 243722756038517
+					"sid": 584232915241660
 				}
 			],
-			"sid": 629265089900512
+			"sid": 618414866520822
 		}
 	],
 	"sid": 159320408848521
