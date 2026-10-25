@@ -1,0 +1,58 @@
+{
+	"name": "door",
+	"plugin-id": "Sprite",
+	"sid": 586316947723522,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Твёрдый",
+			"sid": 628967408839739
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 33,
+						"height": 243,
+						"originX": 0.7575757575757576,
+						"originY": 0.48148148148148145,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3802445,
+						"collisionPoly": {
+							"points": [
+								0,
+								0,
+								0.6893939393939397,
+								0,
+								0.700757575757576,
+								0.9969135802469132,
+								0,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 383550555570419,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

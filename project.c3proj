@@ -8,8 +8,29 @@
 	"usedAddons": [
 		{
 			"type": "plugin",
-			"id": "Button",
-			"name": "Кнопка",
+			"id": "Sprite",
+			"name": "Спрайт",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "EightDir",
+			"name": "8 Направлений",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "scrollto",
+			"name": "Следить за",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "solid",
+			"name": "Твёрдый",
 			"author": "Scirra",
 			"bundled": false
 		}
@@ -17,7 +38,9 @@
 	"uniqueId": "fxbsjfqi5ou",
 	"objectTypes": {
 		"items": [
-			"Кнопка"
+			"player",
+			"door",
+			"wall"
 		],
 		"subfolders": []
 	},
@@ -30,13 +53,14 @@
 	},
 	"layouts": {
 		"items": [
-			"Макет 1"
+			"start"
 		],
 		"subfolders": []
 	},
 	"eventSheets": {
 		"items": [
-			"Список событий 1"
+			"room",
+			"listy"
 		],
 		"subfolders": []
 	},
