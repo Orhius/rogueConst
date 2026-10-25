@@ -25,6 +25,11 @@
 			"behaviorId": "Flash",
 			"name": "Flash",
 			"sid": 649830935631880
+		},
+		{
+			"behaviorId": "EightDir",
+			"name": "Walk",
+			"sid": 143445972446232
 		}
 	],
 	"effectTypes": [],
