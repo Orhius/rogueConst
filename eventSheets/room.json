@@ -1,5 +1,1740 @@
 {
 	"name": "room",
-	"events": [],
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "RogueConst: комнаты на сетке (RoomX, RoomY). Словарь Rooms (глобальный): ключ \"X,Y\" = номер шаблона комнаты, \"c:X,Y\" = 1 если комната зачищена. Шаблоны препятствий в строке Templates: комнаты через |, камни через ;, координаты через запятую. Новую комнату можно добавить, просто дописав шаблон."
+		},
+		{
+			"eventType": "variable",
+			"name": "Templates",
+			"type": "string",
+			"initialValue": "-400,-400|500,300;1420,300;500,780;1420,780|300,250;420,250;300,370;1620,250;1500,250;1620,370;300,830;420,830;300,710;1620,830;1500,830;1620,710|760,340;1160,340;760,740;1160,740;640,540;1280,540|500,250;500,370;500,710;500,830;1420,250;1420,370;1420,710;1420,830|350,540;1570,540;960,360;960,720;650,250;1270,830",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 245179590233782
+		},
+		{
+			"eventType": "variable",
+			"name": "RoomX",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 117909462847097
+		},
+		{
+			"eventType": "variable",
+			"name": "RoomY",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 556315065657425
+		},
+		{
+			"eventType": "variable",
+			"name": "EnterDir",
+			"type": "number",
+			"initialValue": "-1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 525715600507946
+		},
+		{
+			"eventType": "variable",
+			"name": "RoomKey",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 123615025811969
+		},
+		{
+			"eventType": "variable",
+			"name": "Cleared",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 652558219010187
+		},
+		{
+			"eventType": "variable",
+			"name": "IsBossRoom",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 536901690382524
+		},
+		{
+			"eventType": "variable",
+			"name": "RoomsCleared",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 974151777117280
+		},
+		{
+			"eventType": "variable",
+			"name": "HP",
+			"type": "number",
+			"initialValue": "6",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 787964326233736
+		},
+		{
+			"eventType": "variable",
+			"name": "MaxHP",
+			"type": "number",
+			"initialValue": "6",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 100455463904041
+		},
+		{
+			"eventType": "variable",
+			"name": "Damage",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 853183719658353
+		},
+		{
+			"eventType": "variable",
+			"name": "FireDelay",
+			"type": "number",
+			"initialValue": "0.35",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 225282545560120
+		},
+		{
+			"eventType": "variable",
+			"name": "FireCD",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 901024029055016
+		},
+		{
+			"eventType": "variable",
+			"name": "Speed",
+			"type": "number",
+			"initialValue": "380",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 178036922613838
+		},
+		{
+			"eventType": "variable",
+			"name": "DashT",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 476550562236693
+		},
+		{
+			"eventType": "variable",
+			"name": "DashCD",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 758488082584554
+		},
+		{
+			"eventType": "variable",
+			"name": "BuffType",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 799996266589387
+		},
+		{
+			"eventType": "variable",
+			"name": "BuffTime",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 604610306892285
+		},
+		{
+			"eventType": "variable",
+			"name": "RunOver",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 509466804765570
+		},
+		{
+			"eventType": "variable",
+			"name": "Level",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 116569506817742
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 757842278218876
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Вход в комнату: ключ комнаты, зачищена ли она, позиция игрока у двери, через которую вошли"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 561249659601825,
+					"parameters": {
+						"variable": "RoomKey",
+						"value": "RoomX & \",\" & RoomY"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Шаблон комнаты: если комната уже была, оставляем её шаблон, иначе выбираем случайный (стартовая всегда пустая)"
+				},
+				{
+					"id": "add-key",
+					"objectClass": "Rooms",
+					"sid": 230522279942176,
+					"parameters": {
+						"key": "RoomKey",
+						"value": "(Rooms.Get(RoomKey) > 0) ? Rooms.Get(RoomKey) : (((RoomX = 0) & (RoomY = 0)) ? 0 : floor(random(1, 6)))"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 692775655827961,
+					"parameters": {
+						"variable": "Cleared",
+						"value": "Rooms.Get(\"c:\" & RoomKey)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 514732102356426,
+					"parameters": {
+						"variable": "IsBossRoom",
+						"value": "(Cleared = 0) & (RoomsCleared >= 3 + Level * 2)"
+					}
+				},
+				{
+					"id": "set-position",
+					"objectClass": "player",
+					"sid": 781747484231236,
+					"parameters": {
+						"x": "(EnterDir = 0) ? 1700 : ((EnterDir = 3) ? 220 : 960)",
+						"y": "(EnterDir = 1) ? 880 : ((EnterDir = 2) ? 200 : 540)"
+					}
+				},
+				{
+					"id": "flash",
+					"objectClass": "player",
+					"sid": 231009770759409,
+					"behaviorType": "Flash",
+					"parameters": {
+						"on-time": "0.1",
+						"off-time": "0.1",
+						"duration": "1.5"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "door",
+					"sid": 710618431179263,
+					"parameters": {
+						"opacity": "(Cleared = 1) ? 100 : 35"
+					}
+				}
+			],
+			"sid": 399887187675056,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 155819065870556,
+							"parameters": {
+								"count": "tokencount(tokenat(Templates, Rooms.Get(RoomKey), \"|\"), \";\")"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 234624833248311,
+							"parameters": {
+								"object-to-create": "Rock",
+								"layer": "0",
+								"x": "int(tokenat(tokenat(tokenat(Templates, Rooms.Get(RoomKey), \"|\"), loopindex, \";\"), 0, \",\"))",
+								"y": "int(tokenat(tokenat(tokenat(Templates, Rooms.Get(RoomKey), \"|\"), loopindex, \";\"), 1, \",\"))",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 373745334501890
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 408092383611392,
+							"parameters": {
+								"variable": "Cleared",
+								"comparison": 0,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 832679919240787,
+							"parameters": {
+								"first-value": "abs(RoomX) + abs(RoomY)",
+								"comparison": 4,
+								"second-value": "0"
+							}
+						},
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 137263881785060,
+							"parameters": {
+								"count": "min(8, 1 + Level + floor((abs(RoomX) + abs(RoomY)) / 2))"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Враги: чем глубже этаж и дальше от старта, тем больше. Kind 0 = бегун, 1 = стрелок"
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 722220286470020,
+							"parameters": {
+								"object-to-create": "Enemy",
+								"layer": "0",
+								"x": "random(300, 1620)",
+								"y": "random(250, 830)",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemy",
+							"sid": 942866945484144,
+							"parameters": {
+								"instance-variable": "HP",
+								"value": "2 + Level"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemy",
+							"sid": 586749142348597,
+							"parameters": {
+								"instance-variable": "Kind",
+								"value": "((Level + abs(RoomX) + abs(RoomY)) >= 3) * choose(0, 0, 1)"
+							}
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "Enemy",
+							"sid": 919288527359549,
+							"parameters": {
+								"frame-number": "Enemy.Kind"
+							}
+						}
+					],
+					"sid": 409373121753437
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 376816725594297,
+							"parameters": {
+								"variable": "IsBossRoom",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Комната стража этажа"
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 356488518086963,
+							"parameters": {
+								"object-to-create": "Enemy",
+								"layer": "0",
+								"x": "960",
+								"y": "540",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemy",
+							"sid": 501515580359147,
+							"parameters": {
+								"instance-variable": "HP",
+								"value": "25 + Level * 15"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Enemy",
+							"sid": 405157861694262,
+							"parameters": {
+								"instance-variable": "Kind",
+								"value": "2"
+							}
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "Enemy",
+							"sid": 317441009084113,
+							"parameters": {
+								"frame-number": "2"
+							}
+						},
+						{
+							"id": "set-scale",
+							"objectClass": "Enemy",
+							"sid": 886780170902346,
+							"parameters": {
+								"scale": "2.2"
+							}
+						}
+					],
+					"sid": 341005187090282
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 972956487599111
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Враги преследуют игрока рывками в ритме (sin), стрелки медленнее, страж посередине"
+				},
+				{
+					"id": "set-angle-of-motion",
+					"objectClass": "Enemy",
+					"sid": 715637270132975,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"angle": "angle(Enemy.X, Enemy.Y, player.X, player.Y)"
+					}
+				},
+				{
+					"id": "set-speed",
+					"objectClass": "Enemy",
+					"sid": 948451767405813,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"speed": "((Enemy.Kind = 0) ? (200 + Level * 25) : ((Enemy.Kind = 1) ? 60 : 130)) * max(0.1, sin(time * 300 + Enemy.UID * 57))"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Таймеры: перезарядка выстрела, рывок, временный бафф"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 282356570394263,
+					"parameters": {
+						"variable": "FireCD",
+						"value": "max(0, FireCD - dt)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 566308933101863,
+					"parameters": {
+						"variable": "DashT",
+						"value": "max(0, DashT - dt)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 264871268270682,
+					"parameters": {
+						"variable": "DashCD",
+						"value": "max(0, DashCD - dt)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 752926930224740,
+					"parameters": {
+						"variable": "BuffTime",
+						"value": "max(0, BuffTime - dt)"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "player",
+					"sid": 528222493975280,
+					"behaviorType": "8Направлений",
+					"parameters": {
+						"max-speed": "(DashT > 0) ? 1300 : (Speed + ((BuffType = 2) & (BuffTime > 0)) * 200)"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "HUD",
+					"sid": 513404123715057,
+					"parameters": {
+						"text": "\"HP: \" & HP & \"/\" & MaxHP & \"     Урон: \" & Damage & \"     Этаж: \" & Level & \"     Комната: \" & RoomKey & ((BuffTime > 0) ? (\"     \" & tokenat(\"Ярость|Стремительность\", BuffType - 1, \"|\") & \" \" & ceil(BuffTime) & \"с\") : \"\")"
+					}
+				}
+			],
+			"sid": 178776688514913
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "mouse-button-is-down",
+					"objectClass": "Mouse",
+					"sid": 514804364288390,
+					"parameters": {
+						"mouse-button": "left"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 815223194678805,
+					"parameters": {
+						"variable": "FireCD",
+						"comparison": 3,
+						"value": "0"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 150819137355037,
+					"parameters": {
+						"variable": "RunOver",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Выстрел в сторону курсора (Ярость удваивает скорострельность)"
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 795123219799930,
+					"parameters": {
+						"object-to-create": "Bullet",
+						"layer": "0",
+						"x": "player.X",
+						"y": "player.Y",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-angle-of-motion",
+					"objectClass": "Bullet",
+					"sid": 252548156956262,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"angle": "angle(player.X, player.Y, Mouse.X, Mouse.Y)"
+					}
+				},
+				{
+					"id": "set-speed",
+					"objectClass": "Bullet",
+					"sid": 426867154393761,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"speed": "900"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 870278895676664,
+					"parameters": {
+						"variable": "FireCD",
+						"value": "FireDelay * (((BuffType = 1) & (BuffTime > 0)) ? 0.5 : 1)"
+					}
+				}
+			],
+			"sid": 909944072183434
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Bullet",
+					"sid": 635874495153961,
+					"parameters": {
+						"object": "Rock"
+					}
+				},
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Bullet",
+					"sid": 265324468230963,
+					"parameters": {
+						"object": "wall"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "Bullet",
+					"sid": 505253969395020
+				}
+			],
+			"sid": 148249243066787,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Bullet",
+					"sid": 503984641691616,
+					"parameters": {
+						"object": "Enemy"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "Enemy",
+					"sid": 661264914279419,
+					"parameters": {
+						"instance-variable": "HP",
+						"value": "Damage * (((BuffType = 1) & (BuffTime > 0)) ? 2 : 1)"
+					}
+				},
+				{
+					"id": "flash",
+					"objectClass": "Enemy",
+					"sid": 888702493434243,
+					"behaviorType": "Flash",
+					"parameters": {
+						"on-time": "0.05",
+						"off-time": "0.05",
+						"duration": "0.15"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Bullet",
+					"sid": 858358942462225
+				}
+			],
+			"sid": 802724235909375
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 282476002564835,
+					"parameters": {
+						"instance-variable": "HP",
+						"comparison": 3,
+						"value": "0"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 626095114561852,
+					"parameters": {
+						"first-value": "random(100)",
+						"comparison": 2,
+						"second-value": "15"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Шанс 15%: из врага выпадает сердце или временный бафф"
+				},
+				{
+					"id": "spawn-another-object",
+					"objectClass": "Enemy",
+					"sid": 314804988644145,
+					"parameters": {
+						"object": "Pickup",
+						"layer": "0",
+						"image-point": "0",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Pickup",
+					"sid": 986972117270489,
+					"parameters": {
+						"instance-variable": "Kind",
+						"value": "choose(0, 0, 4, 5)"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "Pickup",
+					"sid": 490281547646731,
+					"parameters": {
+						"frame-number": "Pickup.Kind"
+					}
+				}
+			],
+			"sid": 527277323682252
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 688700226291287,
+					"parameters": {
+						"instance-variable": "HP",
+						"comparison": 3,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "Enemy",
+					"sid": 142419640648826
+				}
+			],
+			"sid": 126274874328182
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 921843290522240,
+					"parameters": {
+						"variable": "Cleared",
+						"comparison": 0,
+						"value": "0"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 279969742336794,
+					"parameters": {
+						"first-value": "Enemy.Count",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Комната зачищена: запоминаем в словаре и открываем двери"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 973868432155212,
+					"parameters": {
+						"variable": "Cleared",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-key",
+					"objectClass": "Rooms",
+					"sid": 332812152355640,
+					"parameters": {
+						"key": "\"c:\" & RoomKey",
+						"value": "1"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 524469635763583,
+					"parameters": {
+						"variable": "RoomsCleared",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "door",
+					"sid": 325015930024756,
+					"parameters": {
+						"opacity": "100"
+					}
+				}
+			],
+			"sid": 377579692899445,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 150195373823108,
+							"parameters": {
+								"first-value": "random(100)",
+								"comparison": 2,
+								"second-value": "45"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Награда за комнату: постоянное улучшение или бафф"
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 283926340685822,
+							"parameters": {
+								"object-to-create": "Pickup",
+								"layer": "0",
+								"x": "960",
+								"y": "540",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Pickup",
+							"sid": 917662172325923,
+							"parameters": {
+								"instance-variable": "Kind",
+								"value": "choose(1, 2, 3, 4, 5)"
+							}
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "Pickup",
+							"sid": 694136704041596,
+							"parameters": {
+								"frame-number": "Pickup.Kind"
+							}
+						}
+					],
+					"sid": 569122298631370
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 198044335574940,
+							"parameters": {
+								"variable": "IsBossRoom",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 516982509639154,
+							"parameters": {
+								"object-to-create": "Stairs",
+								"layer": "0",
+								"x": "960",
+								"y": "800",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "Msg",
+							"sid": 612844799523004,
+							"parameters": {
+								"text": "\"Страж повержен. Лестница ведёт выше...\""
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Msg",
+							"sid": 644566910460137,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 383983102151535,
+							"parameters": {
+								"seconds": "2.5",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Msg",
+							"sid": 812559187647576,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 782899589323788
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "player",
+					"sid": 697781369930179,
+					"parameters": {
+						"object": "door"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 617249032690858,
+					"parameters": {
+						"variable": "Cleared",
+						"comparison": 0,
+						"value": "1"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 823097367248120,
+					"parameters": {
+						"variable": "RunOver",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Переход в соседнюю комнату. Dir: 0 лево, 1 верх, 2 низ, 3 право. Словарь Rooms глобальный и переживает перезапуск макета"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 191232365529112,
+					"parameters": {
+						"variable": "EnterDir",
+						"value": "door.Dir"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 473183866698492,
+					"parameters": {
+						"variable": "RoomX",
+						"value": "(door.Dir = 3) - (door.Dir = 0)"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 998510574478683,
+					"parameters": {
+						"variable": "RoomY",
+						"value": "(door.Dir = 2) - (door.Dir = 1)"
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 864428099416055
+				}
+			],
+			"sid": 393333972302445
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "player",
+					"sid": 534700251769637,
+					"parameters": {
+						"object": "Stairs"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 871305144124249,
+					"parameters": {
+						"variable": "RunOver",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Новый этаж: новая карта, сложнее враги"
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 570068839988241,
+					"parameters": {
+						"variable": "Level",
+						"value": "1"
+					}
+				},
+				{
+					"id": "clear",
+					"objectClass": "Rooms",
+					"sid": 135124636467713
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 377158103491045,
+					"parameters": {
+						"variable": "RoomX",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 435802708481689,
+					"parameters": {
+						"variable": "RoomY",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 704817398274462,
+					"parameters": {
+						"variable": "EnterDir",
+						"value": "-1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 360393971506990,
+					"parameters": {
+						"variable": "RoomsCleared",
+						"value": "0"
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 711197896759625
+				}
+			],
+			"sid": 664051016929724
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 633926052200925,
+					"parameters": {
+						"variable": "Level",
+						"comparison": 5,
+						"value": "4"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 112388391934303
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Победа: пройдены 3 этажа"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 390881359485241,
+					"parameters": {
+						"variable": "RunOver",
+						"value": "1"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Enemy",
+					"sid": 328900475119461
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Msg",
+					"sid": 243521488787008,
+					"parameters": {
+						"text": "\"Странник выбрался на свободу!\" & newline & \"Нажми R для нового забега\""
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "Msg",
+					"sid": 425074742899033,
+					"parameters": {
+						"visibility": "visible"
+					}
+				}
+			],
+			"sid": 756846311969091
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player",
+					"sid": 626212661558269,
+					"parameters": {
+						"object": "Pickup"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Предметы. Kind: 0 сердце, 1 урон, 2 скорострельность, 3 макс. HP (постоянные), 4 Ярость, 5 Стремительность (временные баффы на 8 сек)"
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 552340348495561,
+					"parameters": {
+						"variable": "MaxHP",
+						"value": "Pickup.Kind = 3"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 564124251582255,
+					"parameters": {
+						"variable": "HP",
+						"value": "min(MaxHP, HP + (Pickup.Kind = 0) + (Pickup.Kind = 3))"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 340136269101886,
+					"parameters": {
+						"variable": "Damage",
+						"value": "Pickup.Kind = 1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 704733357512534,
+					"parameters": {
+						"variable": "FireDelay",
+						"value": "(Pickup.Kind = 2) ? max(0.1, FireDelay * 0.8) : FireDelay"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 861255678113390,
+					"parameters": {
+						"variable": "BuffType",
+						"value": "(Pickup.Kind >= 4) ? (Pickup.Kind - 3) : BuffType"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 846698411201056,
+					"parameters": {
+						"variable": "BuffTime",
+						"value": "(Pickup.Kind >= 4) ? 8 : BuffTime"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Msg",
+					"sid": 768312898772558,
+					"parameters": {
+						"text": "tokenat(\"+1 здоровье|Урон +1|Скорострельность +25%|Макс. здоровье +1|Ярость: двойной урон и стрельба (8 с)|Стремительность: скорость (8 с)\", Pickup.Kind, \"|\")"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "Msg",
+					"sid": 476358557350353,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Pickup",
+					"sid": 776938602440457
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 662917678457412,
+					"parameters": {
+						"seconds": "2",
+						"use-timescale": true
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "Msg",
+					"sid": 381321259833977,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 732823309572666
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "player",
+					"sid": 789898100671222,
+					"parameters": {
+						"object": "Enemy"
+					}
+				},
+				{
+					"id": "is-flashing",
+					"objectClass": "player",
+					"sid": 193486151508294,
+					"behaviorType": "Flash",
+					"isInverted": true
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 643116991760663,
+					"parameters": {
+						"variable": "RunOver",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Удар врага. Мигание = секунда неуязвимости"
+				},
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 914758153284032,
+					"parameters": {
+						"variable": "HP",
+						"value": "1"
+					}
+				},
+				{
+					"id": "flash",
+					"objectClass": "player",
+					"sid": 660586821709874,
+					"behaviorType": "Flash",
+					"parameters": {
+						"on-time": "0.1",
+						"off-time": "0.1",
+						"duration": "1"
+					}
+				},
+				{
+					"id": "shake",
+					"objectClass": "player",
+					"sid": 221033196745997,
+					"behaviorType": "СледитьЗа",
+					"parameters": {
+						"magnitude": "12",
+						"duration": "0.3",
+						"mode": "reducing-magnitude"
+					}
+				}
+			],
+			"sid": 806263959453861
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "EnemyBullet",
+					"sid": 900346875193650,
+					"parameters": {
+						"object": "player"
+					}
+				},
+				{
+					"id": "is-flashing",
+					"objectClass": "player",
+					"sid": 243593939070124,
+					"behaviorType": "Flash",
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 865977855381593,
+					"parameters": {
+						"variable": "HP",
+						"value": "1"
+					}
+				},
+				{
+					"id": "flash",
+					"objectClass": "player",
+					"sid": 714475350056118,
+					"behaviorType": "Flash",
+					"parameters": {
+						"on-time": "0.1",
+						"off-time": "0.1",
+						"duration": "1"
+					}
+				},
+				{
+					"id": "shake",
+					"objectClass": "player",
+					"sid": 751108899665286,
+					"behaviorType": "СледитьЗа",
+					"parameters": {
+						"magnitude": "12",
+						"duration": "0.3",
+						"mode": "reducing-magnitude"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "EnemyBullet",
+					"sid": 138410425445250
+				}
+			],
+			"sid": 381040195986229
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "EnemyBullet",
+					"sid": 442788108089631,
+					"parameters": {
+						"object": "Rock"
+					}
+				},
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "EnemyBullet",
+					"sid": 896690678486385,
+					"parameters": {
+						"object": "wall"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "EnemyBullet",
+					"sid": 161309565873691
+				}
+			],
+			"sid": 852541525128373,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 124224456843446,
+					"parameters": {
+						"interval-seconds": "1.5"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Enemy",
+					"sid": 201784387235843,
+					"parameters": {
+						"instance-variable": "Kind",
+						"comparison": 5,
+						"value": "1"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 347235336823815,
+					"parameters": {
+						"variable": "RunOver",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Стрелки и страж стреляют в игрока"
+				},
+				{
+					"id": "spawn-another-object",
+					"objectClass": "Enemy",
+					"sid": 586806539800653,
+					"parameters": {
+						"object": "EnemyBullet",
+						"layer": "0",
+						"image-point": "0",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-angle-of-motion",
+					"objectClass": "EnemyBullet",
+					"sid": 637489831219074,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"angle": "angle(EnemyBullet.X, EnemyBullet.Y, player.X, player.Y)"
+					}
+				},
+				{
+					"id": "set-speed",
+					"objectClass": "EnemyBullet",
+					"sid": 924244007477850,
+					"behaviorType": "Bullet",
+					"parameters": {
+						"speed": "300 + Level * 40"
+					}
+				}
+			],
+			"sid": 416672825531052
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 698962458508280,
+					"parameters": {
+						"key": 32
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 396932340037207,
+					"parameters": {
+						"variable": "DashCD",
+						"comparison": 3,
+						"value": "0"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 954125111720562,
+					"parameters": {
+						"variable": "RunOver",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Рывок-уклонение к курсору (Пробел): короткая неуязвимость, перезарядка 0.7 с"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 269245842645037,
+					"parameters": {
+						"variable": "DashT",
+						"value": "0.15"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 218054628249849,
+					"parameters": {
+						"variable": "DashCD",
+						"value": "0.7"
+					}
+				},
+				{
+					"id": "flash",
+					"objectClass": "player",
+					"sid": 149020707529039,
+					"behaviorType": "Flash",
+					"parameters": {
+						"on-time": "0.05",
+						"off-time": "0.05",
+						"duration": "0.35"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "player",
+					"sid": 732080860303786,
+					"behaviorType": "8Направлений",
+					"parameters": {
+						"max-speed": "1300"
+					}
+				},
+				{
+					"id": "set-vector-x",
+					"objectClass": "player",
+					"sid": 654494801144319,
+					"behaviorType": "8Направлений",
+					"parameters": {
+						"vector-x": "1300 * cos(angle(player.X, player.Y, Mouse.X, Mouse.Y))"
+					}
+				},
+				{
+					"id": "set-vector-y",
+					"objectClass": "player",
+					"sid": 792422226013170,
+					"behaviorType": "8Направлений",
+					"parameters": {
+						"vector-y": "1300 * sin(angle(player.X, player.Y, Mouse.X, Mouse.Y))"
+					}
+				}
+			],
+			"sid": 995765065364370
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 898082923480329,
+					"parameters": {
+						"variable": "HP",
+						"comparison": 3,
+						"value": "0"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 377473820658568
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Смерть = конец забега (permadeath)"
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 395039772155596,
+					"parameters": {
+						"variable": "RunOver",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Msg",
+					"sid": 340732266253080,
+					"parameters": {
+						"text": "\"Странник пал на этаже \" & Level & newline & \"Нажми R, чтобы начать новый забег\""
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "Msg",
+					"sid": 151734887166591,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "player",
+					"sid": 534717759337003
+				}
+			],
+			"sid": 862676960959888
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 697167283168854,
+					"parameters": {
+						"key": 82
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 665516481325524,
+					"parameters": {
+						"variable": "RunOver",
+						"comparison": 0,
+						"value": "1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Новый забег: стираем карту и все улучшения"
+				},
+				{
+					"id": "clear",
+					"objectClass": "Rooms",
+					"sid": 428523218265434
+				},
+				{
+					"id": "reset-global-variables",
+					"objectClass": "System",
+					"sid": 728874943105468,
+					"parameters": {
+						"reset-static": false
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 117988493992496
+				}
+			],
+			"sid": 710988958165889
+		}
+	],
 	"sid": 159320408848521
 }

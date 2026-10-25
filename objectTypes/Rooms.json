@@ -1,0 +1,10 @@
+{
+	"name": "Rooms",
+	"plugin-id": "Dictionary",
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"sid": 430506522161227,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

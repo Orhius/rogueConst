@@ -1,0 +1,10 @@
+{
+	"name": "HUD",
+	"plugin-id": "Text",
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"sid": 262841334223960,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

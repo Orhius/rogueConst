@@ -4,14 +4,16 @@
 	"sid": 586316947723522,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [],
-	"behaviorTypes": [
+	"instanceVariables": [
 		{
-			"behaviorId": "solid",
-			"name": "Твёрдый",
-			"sid": 628967408839739
+			"name": "Dir",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 931785216363603
 		}
 	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [

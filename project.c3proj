@@ -33,6 +33,48 @@
 			"name": "Твёрдый",
 			"author": "Scirra",
 			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Keyboard",
+			"name": "Keyboard",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Dictionary",
+			"name": "Dictionary",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Flash",
+			"name": "Flash",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Bullet",
+			"name": "Bullet",
+			"author": "Scirra",
+			"bundled": false
 		}
 	],
 	"uniqueId": "fxbsjfqi5ou",
@@ -40,7 +82,18 @@
 		"items": [
 			"player",
 			"door",
-			"wall"
+			"wall",
+			"Keyboard",
+			"Mouse",
+			"Rooms",
+			"Bullet",
+			"Enemy",
+			"EnemyBullet",
+			"Rock",
+			"Pickup",
+			"Stairs",
+			"HUD",
+			"Msg"
 		],
 		"subfolders": []
 	},
