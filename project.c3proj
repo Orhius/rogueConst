@@ -93,7 +93,9 @@
 			"Msg",
 			"Blade",
 			"Gem",
-			"Shot"
+			"Shot",
+			"EndText",
+			"Shade"
 		],
 		"subfolders": []
 	},
