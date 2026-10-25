@@ -1,25 +1,19 @@
 {
-	"name": "Bullet",
+	"name": "Blade",
 	"plugin-id": "Sprite",
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"sid": 717613249958434,
+	"sid": 645515839076006,
 	"instanceVariables": [],
-	"behaviorTypes": [
-		{
-			"behaviorId": "Bullet",
-			"name": "Bullet",
-			"sid": 557418737200205
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [
 			{
 				"frames": [
 					{
-						"width": 20,
-						"height": 8,
+						"width": 48,
+						"height": 16,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
@@ -41,10 +35,10 @@
 								1
 							]
 						},
-						"imageSpriteId": 4982888
+						"imageSpriteId": 2545030
 					}
 				],
-				"sid": 400500712335748,
+				"sid": 739473453243743,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

@@ -84,16 +84,17 @@
 			"door",
 			"wall",
 			"Keyboard",
-			"Mouse",
 			"Rooms",
-			"Bullet",
 			"Enemy",
-			"EnemyBullet",
 			"Rock",
 			"Pickup",
 			"Stairs",
 			"HUD",
-			"Msg"
+			"Msg",
+			"Blade",
+			"Gem",
+			"Shot",
+			"Mouse"
 		],
 		"subfolders": []
 	},
