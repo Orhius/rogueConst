@@ -3,17 +3,7 @@
 	"events": [
 		{
 			"eventType": "comment",
-			"text": "RogueConst — прототип: управление, камера и генерация комнат. Комнаты на сетке (RoomX, RoomY); словарь Rooms (глобальный) хранит шаблон каждой посещённой комнаты. Шаблоны камней — строка Templates: комнаты через |, камни через ;, координаты через запятую."
-		},
-		{
-			"eventType": "variable",
-			"name": "Templates",
-			"type": "string",
-			"initialValue": "-400,-400|500,300;1420,300;500,780;1420,780|300,250;420,250;300,370;1620,250;1500,250;1620,370;300,830;420,830;300,710;1620,830;1500,830;1620,710|760,340;1160,340;760,740;1160,740;640,540;1280,540|500,250;500,370;500,710;500,830;1420,250;1420,370;1420,710;1420,830|350,540;1570,540;960,360;960,720;650,250;1270,830|-400,-400",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 245179590233782
+			"text": "RogueConst — прототип: управление, камера и бесконечная сетка комнат. Комнаты на координатах (RoomX, RoomY); словарь Rooms (глобальный) запоминает посещённые комнаты."
 		},
 		{
 			"eventType": "variable",
@@ -67,26 +57,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "DashT",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 476550562236693
-		},
-		{
-			"eventType": "variable",
-			"name": "DashCD",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 758488082584554
-		},
-		{
-			"eventType": "variable",
 			"name": "MoveX",
 			"type": "number",
 			"initialValue": "0",
@@ -94,26 +64,6 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 669563490777914
-		},
-		{
-			"eventType": "variable",
-			"name": "MoveY",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 242624982295245
-		},
-		{
-			"eventType": "variable",
-			"name": "LastAim",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 875867724755799
 		},
 		{
 			"eventType": "variable",
@@ -141,18 +91,18 @@
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 144750544001587
+					"sid": 884517762129054
 				}
 			],
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Вход в комнату. Ключ \"X,Y\"; новой комнате выбирается случайный шаблон камней и запоминается в словаре Rooms"
+					"text": "Вход в комнату. Ключ \"X,Y\"; посещённые комнаты отмечаются в словаре Rooms, новые прибавляются к счётчику"
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 833320804632809,
+					"sid": 721117356941599,
 					"parameters": {
 						"variable": "RoomKey",
 						"value": "RoomX & \",\" & RoomY"
@@ -161,7 +111,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 471888248856111,
+					"sid": 945513672725504,
 					"parameters": {
 						"variable": "NewRoom",
 						"value": "(Rooms.Get(RoomKey) = 0) & ((RoomX <> 0) | (RoomY <> 0))"
@@ -170,16 +120,16 @@
 				{
 					"id": "add-key",
 					"objectClass": "Rooms",
-					"sid": 498466265590320,
+					"sid": 414549635536228,
 					"parameters": {
 						"key": "RoomKey",
-						"value": "(Rooms.Get(RoomKey) > 0) ? Rooms.Get(RoomKey) : (((RoomX = 0) & (RoomY = 0)) ? 0 : floor(random(1, 7)))"
+						"value": "1"
 					}
 				},
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 429950790825940,
+					"sid": 174220879563634,
 					"parameters": {
 						"variable": "RoomsVisited",
 						"value": "NewRoom"
@@ -192,45 +142,23 @@
 				{
 					"id": "set-position",
 					"objectClass": "player",
-					"sid": 174572837705513,
+					"sid": 463794356774608,
 					"parameters": {
 						"x": "(EnterDir = 0) ? 1700 : ((EnterDir = 3) ? 220 : 960)",
 						"y": "(EnterDir = 1) ? 880 : ((EnterDir = 2) ? 200 : 540)"
 					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "player",
+					"sid": 252753342769404,
+					"behaviorType": "8Направлений",
+					"parameters": {
+						"max-speed": "Speed"
+					}
 				}
 			],
-			"sid": 206997687315105,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "repeat",
-							"objectClass": "System",
-							"sid": 509968592225787,
-							"parameters": {
-								"count": "tokencount(tokenat(Templates, Rooms.Get(RoomKey), \"|\"), \";\")"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 565185476365382,
-							"parameters": {
-								"object-to-create": "Rock",
-								"layer": "0",
-								"x": "int(tokenat(tokenat(tokenat(Templates, Rooms.Get(RoomKey), \"|\"), loopindex, \";\"), 0, \",\"))",
-								"y": "int(tokenat(tokenat(tokenat(Templates, Rooms.Get(RoomKey), \"|\"), loopindex, \";\"), 1, \",\"))",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						}
-					],
-					"sid": 215021793000777
-				}
-			]
+			"sid": 318378746636078
 		},
 		{
 			"eventType": "block",
@@ -238,63 +166,27 @@
 				{
 					"id": "every-tick",
 					"objectClass": "System",
-					"sid": 940509979436463
+					"sid": 381210770420647
 				}
 			],
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Направление ходьбы обнуляется и заполняется событиями WASD ниже"
+					"text": "Направление по горизонтали обнуляется и заполняется событиями A/D, чтобы персонаж смотрел туда, куда идёт"
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 456660153916262,
+					"sid": 196328899205449,
 					"parameters": {
 						"variable": "MoveX",
 						"value": "0"
 					}
 				},
 				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 965315656291038,
-					"parameters": {
-						"variable": "MoveY",
-						"value": "0"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 882948002082984,
-					"parameters": {
-						"variable": "DashT",
-						"value": "max(0, DashT - dt)"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 651067535087963,
-					"parameters": {
-						"variable": "DashCD",
-						"value": "max(0, DashCD - dt)"
-					}
-				},
-				{
-					"id": "set-max-speed",
-					"objectClass": "player",
-					"sid": 932320966029548,
-					"behaviorType": "8Направлений",
-					"parameters": {
-						"max-speed": "(DashT > 0) ? 1300 : Speed"
-					}
-				},
-				{
 					"id": "set-width",
 					"objectClass": "player",
-					"sid": 979303274816102,
+					"sid": 534262963013451,
 					"parameters": {
 						"width": "(MoveX <> 0) ? ((MoveX < 0) ? -95 : 95) : player.Width"
 					}
@@ -302,18 +194,18 @@
 				{
 					"id": "set-text",
 					"objectClass": "HUD",
-					"sid": 630935604072156,
+					"sid": 666022036265575,
 					"parameters": {
-						"text": "\"Комната: \" & RoomKey & \"   Открыто комнат: \" & RoomsVisited & newline & \"WASD — ходьба, Пробел — рывок. Двери ведут в соседние комнаты\""
+						"text": "\"Комната: \" & RoomKey & \"   Открыто комнат: \" & RoomsVisited & newline & \"WASD — ходьба. Двери ведут в соседние комнаты\""
 					}
 				},
 				{
 					"id": "move-to-top",
 					"objectClass": "HUD",
-					"sid": 768500130495337
+					"sid": 689679198300016
 				}
 			],
-			"sid": 794342366687190
+			"sid": 231025389022602
 		},
 		{
 			"eventType": "block",
@@ -321,7 +213,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 104184190150590,
+					"sid": 416555365777291,
 					"parameters": {
 						"key": 87
 					}
@@ -335,32 +227,14 @@
 				{
 					"id": "simulate-control",
 					"objectClass": "player",
-					"sid": 365868771479533,
+					"sid": 674213435455514,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"control": "up"
 					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 806128270464956,
-					"parameters": {
-						"variable": "MoveY",
-						"value": "-1"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 966882921958518,
-					"parameters": {
-						"variable": "LastAim",
-						"value": "angle(0, 0, MoveX, MoveY)"
-					}
 				}
 			],
-			"sid": 434507446581646
+			"sid": 271687532491575
 		},
 		{
 			"eventType": "block",
@@ -368,7 +242,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 921007683961236,
+					"sid": 762665665394413,
 					"parameters": {
 						"key": 65
 					}
@@ -382,7 +256,7 @@
 				{
 					"id": "simulate-control",
 					"objectClass": "player",
-					"sid": 332131023419572,
+					"sid": 560722282177119,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"control": "left"
@@ -391,23 +265,14 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 663826303691198,
+					"sid": 620988755261797,
 					"parameters": {
 						"variable": "MoveX",
 						"value": "-1"
 					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 377281261351508,
-					"parameters": {
-						"variable": "LastAim",
-						"value": "angle(0, 0, MoveX, MoveY)"
-					}
 				}
 			],
-			"sid": 260614298078142
+			"sid": 585453292221836
 		},
 		{
 			"eventType": "block",
@@ -415,7 +280,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 536498631262743,
+					"sid": 775882544346044,
 					"parameters": {
 						"key": 83
 					}
@@ -429,32 +294,14 @@
 				{
 					"id": "simulate-control",
 					"objectClass": "player",
-					"sid": 825288803787940,
+					"sid": 671290948808518,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"control": "down"
 					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 567971252802864,
-					"parameters": {
-						"variable": "MoveY",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 246039992277679,
-					"parameters": {
-						"variable": "LastAim",
-						"value": "angle(0, 0, MoveX, MoveY)"
-					}
 				}
 			],
-			"sid": 337282686642679
+			"sid": 530621586676447
 		},
 		{
 			"eventType": "block",
@@ -462,7 +309,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 599176897076605,
+					"sid": 353909287415610,
 					"parameters": {
 						"key": 68
 					}
@@ -476,7 +323,7 @@
 				{
 					"id": "simulate-control",
 					"objectClass": "player",
-					"sid": 518284028593190,
+					"sid": 480326062750614,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"control": "right"
@@ -485,98 +332,14 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 584449589677164,
+					"sid": 278384081106875,
 					"parameters": {
 						"variable": "MoveX",
 						"value": "1"
 					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 218646858020187,
-					"parameters": {
-						"variable": "LastAim",
-						"value": "angle(0, 0, MoveX, MoveY)"
-					}
 				}
 			],
-			"sid": 564697987552252
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 644350698288884,
-					"parameters": {
-						"key": 32
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 623070619801121,
-					"parameters": {
-						"variable": "DashCD",
-						"comparison": 3,
-						"value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Рывок (Пробел) в сторону ходьбы; «8 направлений» не пускает сквозь стены и камни"
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 782304277106624,
-					"parameters": {
-						"variable": "DashT",
-						"value": "0.15"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 388256898536638,
-					"parameters": {
-						"variable": "DashCD",
-						"value": "0.7"
-					}
-				},
-				{
-					"id": "set-max-speed",
-					"objectClass": "player",
-					"sid": 628716506902407,
-					"behaviorType": "8Направлений",
-					"parameters": {
-						"max-speed": "1300"
-					}
-				},
-				{
-					"id": "set-vector-x",
-					"objectClass": "player",
-					"sid": 337111195004853,
-					"behaviorType": "8Направлений",
-					"parameters": {
-						"vector-x": "1300 * cos(LastAim)"
-					}
-				},
-				{
-					"id": "set-vector-y",
-					"objectClass": "player",
-					"sid": 663777853538935,
-					"behaviorType": "8Направлений",
-					"parameters": {
-						"vector-y": "1300 * sin(LastAim)"
-					}
-				}
-			],
-			"sid": 477326998684443
+			"sid": 597513719613827
 		},
 		{
 			"eventType": "block",
@@ -584,7 +347,7 @@
 				{
 					"id": "is-overlapping-another-object",
 					"objectClass": "player",
-					"sid": 740607588328975,
+					"sid": 675122625734740,
 					"parameters": {
 						"object": "door"
 					}
@@ -598,7 +361,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 769824451349856,
+					"sid": 828180037944051,
 					"parameters": {
 						"variable": "EnterDir",
 						"value": "door.Dir"
@@ -607,7 +370,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 997770759059789,
+					"sid": 279412679267895,
 					"parameters": {
 						"variable": "RoomX",
 						"value": "(door.Dir = 3) - (door.Dir = 0)"
@@ -616,7 +379,7 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 416794001775876,
+					"sid": 171866883856218,
 					"parameters": {
 						"variable": "RoomY",
 						"value": "(door.Dir = 2) - (door.Dir = 1)"
@@ -625,10 +388,10 @@
 				{
 					"id": "restart-layout",
 					"objectClass": "System",
-					"sid": 223728319720826
+					"sid": 804155175796195
 				}
 			],
-			"sid": 217640007810143
+			"sid": 167541435707269
 		}
 	],
 	"sid": 159320408848521
