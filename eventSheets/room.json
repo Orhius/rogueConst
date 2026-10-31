@@ -3,7 +3,7 @@
 	"events": [
 		{
 			"eventType": "comment",
-			"text": "RogueConst: комнаты на сетке (RoomX, RoomY). Словарь Rooms (глобальный): ключ \"X,Y\" = номер шаблона комнаты, \"c:X,Y\" = 1 если комната зачищена. Шаблоны препятствий в строке Templates: комнаты через |, камни через ;, координаты через запятую. Новую комнату можно добавить, просто дописав шаблон."
+			"text": "RogueConst — прототип: управление, камера и генерация комнат. Комнаты на сетке (RoomX, RoomY); словарь Rooms (глобальный) хранит шаблон каждой посещённой комнаты. Шаблоны камней — строка Templates: комнаты через |, камни через ;, координаты через запятую."
 		},
 		{
 			"eventType": "variable",
@@ -57,86 +57,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "Cleared",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 652558219010187
-		},
-		{
-			"eventType": "variable",
-			"name": "IsBossRoom",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 536901690382524
-		},
-		{
-			"eventType": "variable",
-			"name": "RoomsCleared",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 974151777117280
-		},
-		{
-			"eventType": "variable",
-			"name": "HP",
-			"type": "number",
-			"initialValue": "6",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 787964326233736
-		},
-		{
-			"eventType": "variable",
-			"name": "MaxHP",
-			"type": "number",
-			"initialValue": "6",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 100455463904041
-		},
-		{
-			"eventType": "variable",
-			"name": "Damage",
-			"type": "number",
-			"initialValue": "2",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 853183719658353
-		},
-		{
-			"eventType": "variable",
-			"name": "FireDelay",
-			"type": "number",
-			"initialValue": "0.35",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 225282545560120
-		},
-		{
-			"eventType": "variable",
-			"name": "FireCD",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 901024029055016
-		},
-		{
-			"eventType": "variable",
 			"name": "Speed",
 			"type": "number",
 			"initialValue": "380",
@@ -164,166 +84,6 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 758488082584554
-		},
-		{
-			"eventType": "variable",
-			"name": "BuffType",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 799996266589387
-		},
-		{
-			"eventType": "variable",
-			"name": "BuffTime",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 604610306892285
-		},
-		{
-			"eventType": "variable",
-			"name": "RunOver",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 509466804765570
-		},
-		{
-			"eventType": "variable",
-			"name": "Level",
-			"type": "number",
-			"initialValue": "1",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 116569506817742
-		},
-		{
-			"eventType": "variable",
-			"name": "XP",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 681827771448157
-		},
-		{
-			"eventType": "variable",
-			"name": "XPNeed",
-			"type": "number",
-			"initialValue": "5",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 641214144662959
-		},
-		{
-			"eventType": "variable",
-			"name": "PlayerLvl",
-			"type": "number",
-			"initialValue": "1",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 346895138194701
-		},
-		{
-			"eventType": "variable",
-			"name": "Shots",
-			"type": "number",
-			"initialValue": "1",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 108511063957787
-		},
-		{
-			"eventType": "variable",
-			"name": "PierceLvl",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 849443484722207
-		},
-		{
-			"eventType": "variable",
-			"name": "Blades",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 349712324992455
-		},
-		{
-			"eventType": "variable",
-			"name": "Crit",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 206683849546165
-		},
-		{
-			"eventType": "variable",
-			"name": "Choosing",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 736288420609308
-		},
-		{
-			"eventType": "variable",
-			"name": "Opts",
-			"type": "string",
-			"initialValue": "",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 898232729310739
-		},
-		{
-			"eventType": "variable",
-			"name": "Kills",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 102718402997658
-		},
-		{
-			"eventType": "variable",
-			"name": "ItemNames",
-			"type": "string",
-			"initialValue": "Сердце: +1 здоровье|Урон +1|Скорострельность +12%|Макс. здоровье +1|Ярость: урон и стрельба ×1.5 (6 с)|Стремительность: скорость (6 с)|Скорость +40|Мультивыстрел +1 пуля|Пробивание +1 враг|Клинок-спутник +1|Крит +10%",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 315447166161509
-		},
-		{
-			"eventType": "variable",
-			"name": "FloorNames",
-			"type": "string",
-			"initialValue": "Темница|Катакомбы|Пещеры у выхода|Свобода",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": true,
-			"sid": 441853985608688
 		},
 		{
 			"eventType": "variable",
@@ -357,46 +117,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "AimX",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 180181245549890
-		},
-		{
-			"eventType": "variable",
-			"name": "AimY",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 812539106040999
-		},
-		{
-			"eventType": "variable",
-			"name": "BossKey",
-			"type": "string",
-			"initialValue": "",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 567635445460825
-		},
-		{
-			"eventType": "variable",
-			"name": "BossDead",
-			"type": "number",
-			"initialValue": "0",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 261596617565254
-		},
-		{
-			"eventType": "variable",
 			"name": "NewRoom",
 			"type": "number",
 			"initialValue": "0",
@@ -406,36 +126,42 @@
 			"sid": 780003115096916
 		},
 		{
+			"eventType": "variable",
+			"name": "RoomsVisited",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 607973910366342
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 563056429799134
+					"sid": 144750544001587
 				}
 			],
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Вход в комнату: ключ X,Y, шаблон из словаря (новой комнате — случайный, 6 = сокровищница), зачищена ли, позиция у двери"
+					"text": "Вход в комнату. Ключ \"X,Y\"; новой комнате выбирается случайный шаблон камней и запоминается в словаре Rooms"
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 724588119095366,
+					"sid": 833320804632809,
 					"parameters": {
 						"variable": "RoomKey",
 						"value": "RoomX & \",\" & RoomY"
 					}
 				},
 				{
-					"type": "comment",
-					"text": "NewRoom = 1, если игрок здесь ещё не был (у посещённых комнат шаблон 1-6, у стартовой 0)"
-				},
-				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 517829399322619,
+					"sid": 471888248856111,
 					"parameters": {
 						"variable": "NewRoom",
 						"value": "(Rooms.Get(RoomKey) = 0) & ((RoomX <> 0) | (RoomY <> 0))"
@@ -444,99 +170,36 @@
 				{
 					"id": "add-key",
 					"objectClass": "Rooms",
-					"sid": 211851747224834,
+					"sid": 498466265590320,
 					"parameters": {
 						"key": "RoomKey",
 						"value": "(Rooms.Get(RoomKey) > 0) ? Rooms.Get(RoomKey) : (((RoomX = 0) & (RoomY = 0)) ? 0 : floor(random(1, 7)))"
 					}
 				},
 				{
-					"id": "set-eventvar-value",
+					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 397965337897512,
+					"sid": 429950790825940,
 					"parameters": {
-						"variable": "Cleared",
-						"value": "Rooms.Get(\"c:\" & RoomKey)"
+						"variable": "RoomsVisited",
+						"value": "NewRoom"
 					}
 				},
 				{
 					"type": "comment",
-					"text": "Страж появляется только в новой комнате (не сокровищнице) после 3 + 2×этаж зачисток: шанс 35% и +20% за каждую следующую зачистку"
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 885091116572585,
-					"parameters": {
-						"variable": "BossKey",
-						"value": "((BossKey = \"\") & (NewRoom = 1) & (Rooms.Get(RoomKey) <> 6) & (RoomsCleared >= 3 + Level * 2) & (random(100) < 35 + (RoomsCleared - 3 - Level * 2) * 20)) ? RoomKey : BossKey"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 521444664894819,
-					"parameters": {
-						"variable": "IsBossRoom",
-						"value": "(RoomKey = BossKey) & (BossDead = 0)"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "В комнате побеждённого стража всегда стоит лестница (в остальных она убрана за экран)"
-				},
-				{
-					"id": "create-object",
-					"objectClass": "System",
-					"sid": 880150796478533,
-					"parameters": {
-						"object-to-create": "Stairs",
-						"layer": "0",
-						"x": "((RoomKey = BossKey) & (BossDead = 1)) ? 960 : -1000",
-						"y": "800",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
+					"text": "Игрок появляется у двери, противоположной той, через которую вышел"
 				},
 				{
 					"id": "set-position",
 					"objectClass": "player",
-					"sid": 573295433163760,
+					"sid": 174572837705513,
 					"parameters": {
 						"x": "(EnterDir = 0) ? 1700 : ((EnterDir = 3) ? 220 : 960)",
 						"y": "(EnterDir = 1) ? 880 : ((EnterDir = 2) ? 200 : 540)"
 					}
-				},
-				{
-					"id": "flash",
-					"objectClass": "player",
-					"sid": 230680923978322,
-					"behaviorType": "Flash",
-					"parameters": {
-						"on-time": "0.1",
-						"off-time": "0.1",
-						"duration": "1.5"
-					}
-				},
-				{
-					"id": "set-opacity",
-					"objectClass": "door",
-					"sid": 678089645832993,
-					"parameters": {
-						"opacity": "(Cleared = 1) ? 100 : 35"
-					}
-				},
-				{
-					"id": "set-layer-background-color",
-					"objectClass": "System",
-					"sid": 662739910745070,
-					"parameters": {
-						"layer": "0",
-						"color": "rgbEx255(int(tokenat(\"94|70|52|110\", min(Level - 1, 3), \"|\")), int(tokenat(\"94|58|70|110\", min(Level - 1, 3), \"|\")), int(tokenat(\"94|86|60|80\", min(Level - 1, 3), \"|\")))"
-					}
 				}
 			],
-			"sid": 194257454632623,
+			"sid": 206997687315105,
 			"children": [
 				{
 					"eventType": "block",
@@ -544,7 +207,7 @@
 						{
 							"id": "repeat",
 							"objectClass": "System",
-							"sid": 364935979629144,
+							"sid": 509968592225787,
 							"parameters": {
 								"count": "tokencount(tokenat(Templates, Rooms.Get(RoomKey), \"|\"), \";\")"
 							}
@@ -554,7 +217,7 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 994948873146264,
+							"sid": 565185476365382,
 							"parameters": {
 								"object-to-create": "Rock",
 								"layer": "0",
@@ -565,293 +228,7 @@
 							}
 						}
 					],
-					"sid": 831181815823017
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 353894522968845,
-							"parameters": {
-								"variable": "Cleared",
-								"comparison": 0,
-								"value": "0"
-							}
-						},
-						{
-							"id": "compare-two-values",
-							"objectClass": "System",
-							"sid": 350402102285225,
-							"parameters": {
-								"first-value": "abs(RoomX) + abs(RoomY)",
-								"comparison": 4,
-								"second-value": "0"
-							}
-						},
-						{
-							"id": "compare-two-values",
-							"objectClass": "System",
-							"sid": 779142811873505,
-							"parameters": {
-								"first-value": "Rooms.Get(RoomKey)",
-								"comparison": 1,
-								"second-value": "6"
-							}
-						},
-						{
-							"id": "repeat",
-							"objectClass": "System",
-							"sid": 833749962398218,
-							"parameters": {
-								"count": "min(8, 1 + Level + floor((abs(RoomX) + abs(RoomY)) / 2))"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Враги: 0 бегун, 1 стрелок, 3 рывковый (оранжевый). Чем глубже, тем больше и сильнее"
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 303169625014131,
-							"parameters": {
-								"object-to-create": "Enemy",
-								"layer": "0",
-								"x": "random(300, 1620)",
-								"y": "random(250, 830)",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemy",
-							"sid": 730389752044253,
-							"parameters": {
-								"instance-variable": "HP",
-								"value": "3 + Level * 3 + floor((abs(RoomX) + abs(RoomY)) / 2)"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemy",
-							"sid": 937777835645315,
-							"parameters": {
-								"instance-variable": "Kind",
-								"value": "choose(0, 0, ((Level + abs(RoomX) + abs(RoomY)) >= 3) ? 1 : 0, ((Level + abs(RoomX) + abs(RoomY)) >= 4) ? 3 : 0)"
-							}
-						},
-						{
-							"id": "set-animation-frame",
-							"objectClass": "Enemy",
-							"sid": 921726886681919,
-							"parameters": {
-								"frame-number": "Enemy.Kind"
-							}
-						}
-					],
-					"sid": 277270864067922
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 220574197474604,
-							"parameters": {
-								"variable": "IsBossRoom",
-								"comparison": 0,
-								"value": "1"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Страж этажа"
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 251935685592092,
-							"parameters": {
-								"object-to-create": "Enemy",
-								"layer": "0",
-								"x": "960",
-								"y": "540",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemy",
-							"sid": 308630177543149,
-							"parameters": {
-								"instance-variable": "HP",
-								"value": "40 + Level * 30"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Enemy",
-							"sid": 110359235440430,
-							"parameters": {
-								"instance-variable": "Kind",
-								"value": "2"
-							}
-						},
-						{
-							"id": "set-animation-frame",
-							"objectClass": "Enemy",
-							"sid": 883671297211674,
-							"parameters": {
-								"frame-number": "2"
-							}
-						},
-						{
-							"id": "set-scale",
-							"objectClass": "Enemy",
-							"sid": 614903482880349,
-							"parameters": {
-								"scale": "2.2"
-							}
-						},
-						{
-							"id": "set-text",
-							"objectClass": "Msg",
-							"sid": 975652484685502,
-							"parameters": {
-								"text": "\"Страж этажа!\""
-							}
-						},
-						{
-							"id": "set-visible",
-							"objectClass": "Msg",
-							"sid": 716229556761586,
-							"parameters": {
-								"visibility": "visible"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 697833810703856,
-							"parameters": {
-								"seconds": "2",
-								"use-timescale": true
-							}
-						},
-						{
-							"id": "set-visible",
-							"objectClass": "Msg",
-							"sid": 405593764079403,
-							"parameters": {
-								"visibility": "invisible"
-							}
-						}
-					],
-					"sid": 556851916278749
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 705252854010883,
-							"parameters": {
-								"variable": "Cleared",
-								"comparison": 0,
-								"value": "0"
-							}
-						},
-						{
-							"id": "compare-two-values",
-							"objectClass": "System",
-							"sid": 835188447075267,
-							"parameters": {
-								"first-value": "Rooms.Get(RoomKey)",
-								"comparison": 0,
-								"second-value": "6"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Сокровищница: без врагов, в центре постоянное улучшение"
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 214411488717512,
-							"parameters": {
-								"object-to-create": "Pickup",
-								"layer": "0",
-								"x": "960",
-								"y": "540",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Pickup",
-							"sid": 255098614552821,
-							"parameters": {
-								"instance-variable": "Kind",
-								"value": "choose(1, 2, 3)"
-							}
-						},
-						{
-							"id": "set-animation-frame",
-							"objectClass": "Pickup",
-							"sid": 801037146685602,
-							"parameters": {
-								"frame-number": "Pickup.Kind"
-							}
-						},
-						{
-							"id": "set-text",
-							"objectClass": "Msg",
-							"sid": 296215590945626,
-							"parameters": {
-								"text": "\"Сокровищница!\""
-							}
-						},
-						{
-							"id": "set-visible",
-							"objectClass": "Msg",
-							"sid": 999164766574936,
-							"parameters": {
-								"visibility": "visible"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 199000530935654,
-							"parameters": {
-								"seconds": "2",
-								"use-timescale": true
-							}
-						},
-						{
-							"id": "set-visible",
-							"objectClass": "Msg",
-							"sid": 649072378778226,
-							"parameters": {
-								"visibility": "invisible"
-							}
-						}
-					],
-					"sid": 668234040535668
+					"sid": 215021793000777
 				}
 			]
 		},
@@ -861,18 +238,18 @@
 				{
 					"id": "every-tick",
 					"objectClass": "System",
-					"sid": 648841457210849
+					"sid": 940509979436463
 				}
 			],
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Направления ходьбы (WASD) и стрельбы (стрелки) обнуляются и заполняются событиями ниже"
+					"text": "Направление ходьбы обнуляется и заполняется событиями WASD ниже"
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 739299282961717,
+					"sid": 456660153916262,
 					"parameters": {
 						"variable": "MoveX",
 						"value": "0"
@@ -881,7 +258,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 506392469131173,
+					"sid": 965315656291038,
 					"parameters": {
 						"variable": "MoveY",
 						"value": "0"
@@ -890,91 +267,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 791817237007860,
-					"parameters": {
-						"variable": "AimX",
-						"value": "0"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 471314273273856,
-					"parameters": {
-						"variable": "AimY",
-						"value": "0"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Враги идут к игроку рывками в ритме через «8 направлений», поэтому упираются в стены и камни"
-				},
-				{
-					"id": "set-default-controls",
-					"objectClass": "Enemy",
-					"sid": 861618985498613,
-					"behaviorType": "Walk",
-					"parameters": {
-						"default-controls": false
-					}
-				},
-				{
-					"id": "set-max-speed",
-					"objectClass": "Enemy",
-					"sid": 350434740169362,
-					"behaviorType": "Walk",
-					"parameters": {
-						"max-speed": "max(1, ((Enemy.Kind = 3) ? ((sin(time * 200 + Enemy.UID * 57) > 0.8) ? 750 : 20) : (((Enemy.Kind = 0) ? (200 + Level * 25) : ((Enemy.Kind = 1) ? 60 : 130)) * max(0.1, sin(time * 300 + Enemy.UID * 57)))))"
-					}
-				},
-				{
-					"id": "set-vector-x",
-					"objectClass": "Enemy",
-					"sid": 669919766933764,
-					"behaviorType": "Walk",
-					"parameters": {
-						"vector-x": "cos(angle(Enemy.X, Enemy.Y, player.X, player.Y)) * ((Enemy.Kind = 3) ? ((sin(time * 200 + Enemy.UID * 57) > 0.8) ? 750 : 20) : (((Enemy.Kind = 0) ? (200 + Level * 25) : ((Enemy.Kind = 1) ? 60 : 130)) * max(0.1, sin(time * 300 + Enemy.UID * 57))))"
-					}
-				},
-				{
-					"id": "set-vector-y",
-					"objectClass": "Enemy",
-					"sid": 546532075630620,
-					"behaviorType": "Walk",
-					"parameters": {
-						"vector-y": "sin(angle(Enemy.X, Enemy.Y, player.X, player.Y)) * ((Enemy.Kind = 3) ? ((sin(time * 200 + Enemy.UID * 57) > 0.8) ? 750 : 20) : (((Enemy.Kind = 0) ? (200 + Level * 25) : ((Enemy.Kind = 1) ? 60 : 130)) * max(0.1, sin(time * 300 + Enemy.UID * 57))))"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Снаряды летят в ту сторону, куда повёрнуты"
-				},
-				{
-					"id": "move-at-angle",
-					"objectClass": "Shot",
-					"sid": 186852478376577,
-					"parameters": {
-						"angle": "Shot.Angle",
-						"distance": "((Shot.Hostile = 1) ? (260 + Level * 30) : 900) * dt"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Таймеры: перезарядка выстрела и рывка, временный бафф"
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 876690239749523,
-					"parameters": {
-						"variable": "FireCD",
-						"value": "max(0, FireCD - dt)"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 967929384507421,
+					"sid": 882948002082984,
 					"parameters": {
 						"variable": "DashT",
 						"value": "max(0, DashT - dt)"
@@ -983,93 +276,44 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 534491823541049,
+					"sid": 651067535087963,
 					"parameters": {
 						"variable": "DashCD",
 						"value": "max(0, DashCD - dt)"
 					}
 				},
 				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 444633059714820,
+					"id": "set-max-speed",
+					"objectClass": "player",
+					"sid": 932320966029548,
+					"behaviorType": "8Направлений",
 					"parameters": {
-						"variable": "BuffTime",
-						"value": "max(0, BuffTime - dt)"
+						"max-speed": "(DashT > 0) ? 1300 : Speed"
 					}
 				},
 				{
-					"id": "set-max-speed",
+					"id": "set-width",
 					"objectClass": "player",
-					"sid": 544980235357231,
-					"behaviorType": "8Направлений",
+					"sid": 979303274816102,
 					"parameters": {
-						"max-speed": "(DashT > 0) ? 1300 : (Speed + ((BuffType = 2) & (BuffTime > 0)) * 200)"
+						"width": "(MoveX <> 0) ? ((MoveX < 0) ? -95 : 95) : player.Width"
 					}
 				},
 				{
 					"id": "set-text",
 					"objectClass": "HUD",
-					"sid": 902335187704058,
+					"sid": 630935604072156,
 					"parameters": {
-						"text": "\"HP: \" & HP & \"/\" & MaxHP & \"   Ур. \" & PlayerLvl & \" (\" & XP & \"/\" & XPNeed & \")   Урон: \" & Damage & \"   Этаж \" & Level & \": \" & tokenat(FloorNames, min(Level - 1, 3), \"|\") & \"   Убито: \" & Kills & ((BuffTime > 0) ? (\"   \" & tokenat(\"Ярость|Стремительность\", BuffType - 1, \"|\") & \" \" & ceil(BuffTime) & \"с\") : \"\") & newline & \"WASD — ходьба, стрелки — стрельба, Пробел — рывок\""
+						"text": "\"Комната: \" & RoomKey & \"   Открыто комнат: \" & RoomsVisited & newline & \"WASD — ходьба, Пробел — рывок. Двери ведут в соседние комнаты\""
 					}
-				},
-				{
-					"type": "comment",
-					"text": "Персонаж смотрит туда, куда стреляет, иначе — куда идёт; клинки кружат вокруг него"
-				},
-				{
-					"id": "set-width",
-					"objectClass": "player",
-					"sid": 137014544829141,
-					"parameters": {
-						"width": "(AimX <> 0) ? ((AimX < 0) ? -95 : 95) : ((MoveX <> 0) ? ((MoveX < 0) ? -95 : 95) : player.Width)"
-					}
-				},
-				{
-					"id": "set-position",
-					"objectClass": "Blade",
-					"sid": 420314519236042,
-					"parameters": {
-						"x": "player.X + cos(time * 240 + Blade.IID * 360 / max(1, Blade.Count)) * 130",
-						"y": "player.Y + sin(time * 240 + Blade.IID * 360 / max(1, Blade.Count)) * 130"
-					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "Blade",
-					"sid": 190029233046801,
-					"parameters": {
-						"angle": "time * 240 + Blade.IID * 360 / max(1, Blade.Count) + 90"
-					}
-				},
-				{
-					"type": "comment",
-					"text": "Тексты всегда поверх камней, врагов и предметов"
-				},
-				{
-					"id": "move-to-top",
-					"objectClass": "Shade",
-					"sid": 591529066962547
 				},
 				{
 					"id": "move-to-top",
 					"objectClass": "HUD",
-					"sid": 422554816007055
-				},
-				{
-					"id": "move-to-top",
-					"objectClass": "Msg",
-					"sid": 481884201077890
-				},
-				{
-					"id": "move-to-top",
-					"objectClass": "EndText",
-					"sid": 644185413291104
+					"sid": 768500130495337
 				}
 			],
-			"sid": 846750178381703
+			"sid": 794342366687190
 		},
 		{
 			"eventType": "block",
@@ -1077,7 +321,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 681718019140441,
+					"sid": 104184190150590,
 					"parameters": {
 						"key": 87
 					}
@@ -1091,7 +335,7 @@
 				{
 					"id": "simulate-control",
 					"objectClass": "player",
-					"sid": 755506219285306,
+					"sid": 365868771479533,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"control": "up"
@@ -1100,14 +344,23 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 735961485426378,
+					"sid": 806128270464956,
 					"parameters": {
 						"variable": "MoveY",
 						"value": "-1"
 					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 966882921958518,
+					"parameters": {
+						"variable": "LastAim",
+						"value": "angle(0, 0, MoveX, MoveY)"
+					}
 				}
 			],
-			"sid": 649618591788406
+			"sid": 434507446581646
 		},
 		{
 			"eventType": "block",
@@ -1115,7 +368,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 773980072850460,
+					"sid": 921007683961236,
 					"parameters": {
 						"key": 65
 					}
@@ -1129,7 +382,7 @@
 				{
 					"id": "simulate-control",
 					"objectClass": "player",
-					"sid": 203213145792648,
+					"sid": 332131023419572,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"control": "left"
@@ -1138,14 +391,23 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 628745494447135,
+					"sid": 663826303691198,
 					"parameters": {
 						"variable": "MoveX",
 						"value": "-1"
 					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 377281261351508,
+					"parameters": {
+						"variable": "LastAim",
+						"value": "angle(0, 0, MoveX, MoveY)"
+					}
 				}
 			],
-			"sid": 483548904549852
+			"sid": 260614298078142
 		},
 		{
 			"eventType": "block",
@@ -1153,7 +415,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 114167535083862,
+					"sid": 536498631262743,
 					"parameters": {
 						"key": 83
 					}
@@ -1167,7 +429,7 @@
 				{
 					"id": "simulate-control",
 					"objectClass": "player",
-					"sid": 305577944899999,
+					"sid": 825288803787940,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"control": "down"
@@ -1176,14 +438,23 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 459504236007105,
+					"sid": 567971252802864,
 					"parameters": {
 						"variable": "MoveY",
 						"value": "1"
 					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 246039992277679,
+					"parameters": {
+						"variable": "LastAim",
+						"value": "angle(0, 0, MoveX, MoveY)"
+					}
 				}
 			],
-			"sid": 686678502788259
+			"sid": 337282686642679
 		},
 		{
 			"eventType": "block",
@@ -1191,7 +462,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 647684159445694,
+					"sid": 599176897076605,
 					"parameters": {
 						"key": 68
 					}
@@ -1205,7 +476,7 @@
 				{
 					"id": "simulate-control",
 					"objectClass": "player",
-					"sid": 608068610500059,
+					"sid": 518284028593190,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"control": "right"
@@ -1214,1579 +485,23 @@
 				{
 					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 637866868884034,
+					"sid": 584449589677164,
 					"parameters": {
 						"variable": "MoveX",
 						"value": "1"
 					}
-				}
-			],
-			"sid": 529702592100207
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "key-is-down",
-					"objectClass": "Keyboard",
-					"sid": 350584480982634,
-					"parameters": {
-						"key": 37
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Стрелка влево — стрелять влево"
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 292032115670646,
-					"parameters": {
-						"variable": "AimX",
-						"value": "-1"
-					}
-				}
-			],
-			"sid": 849330625538388
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "key-is-down",
-					"objectClass": "Keyboard",
-					"sid": 918842689966828,
-					"parameters": {
-						"key": 39
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Стрелка вправо — стрелять вправо"
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 520545084629230,
-					"parameters": {
-						"variable": "AimX",
-						"value": "1"
-					}
-				}
-			],
-			"sid": 949869345363960
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "key-is-down",
-					"objectClass": "Keyboard",
-					"sid": 361111094785721,
-					"parameters": {
-						"key": 38
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Стрелка вверх — стрелять вверх"
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 467174976309905,
-					"parameters": {
-						"variable": "AimY",
-						"value": "-1"
-					}
-				}
-			],
-			"sid": 504993210420068
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "key-is-down",
-					"objectClass": "Keyboard",
-					"sid": 415956310533529,
-					"parameters": {
-						"key": 40
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Стрелка вниз — стрелять вниз"
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 439776904719997,
-					"parameters": {
-						"variable": "AimY",
-						"value": "1"
-					}
-				}
-			],
-			"sid": 787485895432251
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-two-values",
-					"objectClass": "System",
-					"sid": 264667415522668,
-					"parameters": {
-						"first-value": "(AimX <> 0) | (AimY <> 0)",
-						"comparison": 0,
-						"second-value": "1"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 988106556234940,
-					"parameters": {
-						"variable": "FireCD",
-						"comparison": 3,
-						"value": "0"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 450827970987149,
-					"parameters": {
-						"variable": "Choosing",
-						"comparison": 0,
-						"value": "0"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 303223000251648,
-					"parameters": {
-						"variable": "RunOver",
-						"comparison": 0,
-						"value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Выстрел в сторону стрелок (две стрелки — диагональ). Мультивыстрел даёт веер, Ярость ускоряет стрельбу"
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 103786029844228,
+					"sid": 218646858020187,
 					"parameters": {
 						"variable": "LastAim",
-						"value": "angle(0, 0, AimX, AimY)"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 430927129038274,
-					"parameters": {
-						"variable": "FireCD",
-						"value": "FireDelay / (((BuffType = 1) & (BuffTime > 0)) ? 1.5 : 1)"
+						"value": "angle(0, 0, MoveX, MoveY)"
 					}
 				}
 			],
-			"sid": 224852392778062,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "repeat",
-							"objectClass": "System",
-							"sid": 477435110122519,
-							"parameters": {
-								"count": "Shots"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 801889569021488,
-							"parameters": {
-								"object-to-create": "Shot",
-								"layer": "0",
-								"x": "player.X",
-								"y": "player.Y",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Shot",
-							"sid": 678682414240015,
-							"parameters": {
-								"instance-variable": "Hostile",
-								"value": "0"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Shot",
-							"sid": 963615468677418,
-							"parameters": {
-								"instance-variable": "Pierce",
-								"value": "PierceLvl"
-							}
-						},
-						{
-							"id": "set-animation-frame",
-							"objectClass": "Shot",
-							"sid": 942288919722427,
-							"parameters": {
-								"frame-number": "0"
-							}
-						},
-						{
-							"id": "set-angle",
-							"objectClass": "Shot",
-							"sid": 617867885039236,
-							"parameters": {
-								"angle": "LastAim + (loopindex - (Shots - 1) / 2) * 10"
-							}
-						}
-					],
-					"sid": 177191444606109
-				}
-			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-collision-with-another-object",
-					"objectClass": "Shot",
-					"sid": 118536875246571,
-					"parameters": {
-						"object": "Rock"
-					}
-				},
-				{
-					"id": "on-collision-with-another-object",
-					"objectClass": "Shot",
-					"sid": 363849054096000,
-					"parameters": {
-						"object": "wall"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "destroy",
-					"objectClass": "Shot",
-					"sid": 764915425269006
-				}
-			],
-			"sid": 566021418932376,
-			"isOrBlock": true
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-collision-with-another-object",
-					"objectClass": "Shot",
-					"sid": 481782662819668,
-					"parameters": {
-						"object": "Enemy"
-					}
-				},
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Shot",
-					"sid": 970609225210904,
-					"parameters": {
-						"instance-variable": "Hostile",
-						"comparison": 0,
-						"value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "subtract-from-instvar",
-					"objectClass": "Enemy",
-					"sid": 497192445854075,
-					"parameters": {
-						"instance-variable": "HP",
-						"value": "Damage * (((BuffType = 1) & (BuffTime > 0)) ? 1.5 : 1) * ((random(100) < Crit) ? 2 : 1)"
-					}
-				},
-				{
-					"id": "flash",
-					"objectClass": "Enemy",
-					"sid": 431554170035796,
-					"behaviorType": "Flash",
-					"parameters": {
-						"on-time": "0.05",
-						"off-time": "0.05",
-						"duration": "0.15"
-					}
-				},
-				{
-					"id": "subtract-from-instvar",
-					"objectClass": "Shot",
-					"sid": 751881138544396,
-					"parameters": {
-						"instance-variable": "Pierce",
-						"value": "1"
-					}
-				}
-			],
-			"sid": 725520804113700,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Shot",
-							"sid": 401614371416794,
-							"parameters": {
-								"instance-variable": "Pierce",
-								"comparison": 2,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "destroy",
-							"objectClass": "Shot",
-							"sid": 547211315490594
-						}
-					],
-					"sid": 751066067176161
-				}
-			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Enemy",
-					"sid": 903924445072846,
-					"parameters": {
-						"instance-variable": "HP",
-						"comparison": 3,
-						"value": "0"
-					}
-				},
-				{
-					"id": "compare-two-values",
-					"objectClass": "System",
-					"sid": 302412734344566,
-					"parameters": {
-						"first-value": "random(100)",
-						"comparison": 2,
-						"second-value": "10"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Шанс 15%: сердце или временный бафф"
-				},
-				{
-					"id": "spawn-another-object",
-					"objectClass": "Enemy",
-					"sid": 117070956947575,
-					"parameters": {
-						"object": "Pickup",
-						"layer": "0",
-						"image-point": "0",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Pickup",
-					"sid": 524814590006639,
-					"parameters": {
-						"instance-variable": "Kind",
-						"value": "choose(0, 0, 4, 5)"
-					}
-				},
-				{
-					"id": "set-animation-frame",
-					"objectClass": "Pickup",
-					"sid": 248816678883497,
-					"parameters": {
-						"frame-number": "Pickup.Kind"
-					}
-				}
-			],
-			"sid": 506057919984891
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Enemy",
-					"sid": 766734815017229,
-					"parameters": {
-						"instance-variable": "HP",
-						"comparison": 3,
-						"value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Смерть врага: кристалл опыта (страж даёт 10)"
-				},
-				{
-					"id": "spawn-another-object",
-					"objectClass": "Enemy",
-					"sid": 842023158394687,
-					"parameters": {
-						"object": "Gem",
-						"layer": "0",
-						"image-point": "0",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Gem",
-					"sid": 268431488253525,
-					"parameters": {
-						"instance-variable": "Value",
-						"value": "(Enemy.Kind = 2) ? 10 : 1"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 842586644636239,
-					"parameters": {
-						"variable": "Kills",
-						"value": "1"
-					}
-				},
-				{
-					"id": "destroy",
-					"objectClass": "Enemy",
-					"sid": 954383356057851
-				}
-			],
-			"sid": 743702331947930
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 870486063927014,
-					"parameters": {
-						"variable": "Cleared",
-						"comparison": 0,
-						"value": "0"
-					}
-				},
-				{
-					"id": "compare-two-values",
-					"objectClass": "System",
-					"sid": 381927336567021,
-					"parameters": {
-						"first-value": "Enemy.Count",
-						"comparison": 0,
-						"second-value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Комната зачищена: запоминаем в словаре и открываем двери"
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 304988863880423,
-					"parameters": {
-						"variable": "Cleared",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 690645466300575,
-					"parameters": {
-						"variable": "BossDead",
-						"value": "max(BossDead, IsBossRoom)"
-					}
-				},
-				{
-					"id": "add-key",
-					"objectClass": "Rooms",
-					"sid": 782603559810507,
-					"parameters": {
-						"key": "\"c:\" & RoomKey",
-						"value": "1"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 814860805005117,
-					"parameters": {
-						"variable": "RoomsCleared",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-opacity",
-					"objectClass": "door",
-					"sid": 442070098678881,
-					"parameters": {
-						"opacity": "100"
-					}
-				}
-			],
-			"sid": 478942035739956,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-two-values",
-							"objectClass": "System",
-							"sid": 899831433151096,
-							"parameters": {
-								"first-value": "random(100)",
-								"comparison": 2,
-								"second-value": "35"
-							}
-						},
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 385518234402374,
-							"parameters": {
-								"variable": "IsBossRoom",
-								"comparison": 0,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Награда за комнату"
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 457130105057601,
-							"parameters": {
-								"object-to-create": "Pickup",
-								"layer": "0",
-								"x": "960",
-								"y": "540",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Pickup",
-							"sid": 296905582476342,
-							"parameters": {
-								"instance-variable": "Kind",
-								"value": "choose(1, 2, 3, 4, 5)"
-							}
-						},
-						{
-							"id": "set-animation-frame",
-							"objectClass": "Pickup",
-							"sid": 848003242349855,
-							"parameters": {
-								"frame-number": "Pickup.Kind"
-							}
-						}
-					],
-					"sid": 492604966407656
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 587597081103581,
-							"parameters": {
-								"variable": "IsBossRoom",
-								"comparison": 0,
-								"value": "1"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 248922768668247,
-							"parameters": {
-								"object-to-create": "Stairs",
-								"layer": "0",
-								"x": "960",
-								"y": "800",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-text",
-							"objectClass": "Msg",
-							"sid": 183634036053051,
-							"parameters": {
-								"text": "\"Страж повержен. Лестница ведёт выше...\""
-							}
-						},
-						{
-							"id": "set-visible",
-							"objectClass": "Msg",
-							"sid": 146339365396894,
-							"parameters": {
-								"visibility": "visible"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 944781783230985,
-							"parameters": {
-								"seconds": "2.5",
-								"use-timescale": true
-							}
-						},
-						{
-							"id": "set-visible",
-							"objectClass": "Msg",
-							"sid": 832694227501119,
-							"parameters": {
-								"visibility": "invisible"
-							}
-						}
-					],
-					"sid": 547765330759697
-				}
-			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "is-overlapping-another-object",
-					"objectClass": "player",
-					"sid": 833852683261914,
-					"parameters": {
-						"object": "door"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 836610064027476,
-					"parameters": {
-						"variable": "Cleared",
-						"comparison": 0,
-						"value": "1"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 363244469962323,
-					"parameters": {
-						"variable": "RunOver",
-						"comparison": 0,
-						"value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Переход в соседнюю комнату. Dir: 0 лево, 1 верх, 2 низ, 3 право"
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 143108312056100,
-					"parameters": {
-						"variable": "EnterDir",
-						"value": "door.Dir"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 408270366184175,
-					"parameters": {
-						"variable": "RoomX",
-						"value": "(door.Dir = 3) - (door.Dir = 0)"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 832160292991973,
-					"parameters": {
-						"variable": "RoomY",
-						"value": "(door.Dir = 2) - (door.Dir = 1)"
-					}
-				},
-				{
-					"id": "restart-layout",
-					"objectClass": "System",
-					"sid": 123167902850982
-				}
-			],
-			"sid": 255724332461426
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "is-overlapping-another-object",
-					"objectClass": "player",
-					"sid": 995786553090816,
-					"parameters": {
-						"object": "Stairs"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 853546025388526,
-					"parameters": {
-						"variable": "RunOver",
-						"comparison": 0,
-						"value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Новый этаж: новая карта, враги сильнее"
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 677297698807016,
-					"parameters": {
-						"variable": "Level",
-						"value": "1"
-					}
-				},
-				{
-					"id": "clear",
-					"objectClass": "Rooms",
-					"sid": 150307349748846
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 469665990689034,
-					"parameters": {
-						"variable": "RoomX",
-						"value": "0"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 795299562446605,
-					"parameters": {
-						"variable": "RoomY",
-						"value": "0"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 490222225482313,
-					"parameters": {
-						"variable": "EnterDir",
-						"value": "-1"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 396671092241016,
-					"parameters": {
-						"variable": "RoomsCleared",
-						"value": "0"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 571479530659017,
-					"parameters": {
-						"variable": "BossKey",
-						"value": "\"\""
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 290849888602374,
-					"parameters": {
-						"variable": "BossDead",
-						"value": "0"
-					}
-				},
-				{
-					"id": "restart-layout",
-					"objectClass": "System",
-					"sid": 143487591874309
-				}
-			],
-			"sid": 651324485100523
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "is-overlapping-another-object",
-					"objectClass": "player",
-					"sid": 307863223975574,
-					"parameters": {
-						"object": "Pickup"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Предмет. Kind: 0 сердце, 1 урон, 2 скорострельность, 3 макс. HP, 4 Ярость, 5 Стремительность, 6 скорость, 7 мультивыстрел, 8 пробивание, 9 клинок, 10 крит"
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 298787481861905,
-					"parameters": {
-						"variable": "MaxHP",
-						"value": "Pickup.Kind = 3"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 347155826775986,
-					"parameters": {
-						"variable": "HP",
-						"value": "min(MaxHP, HP + (Pickup.Kind = 0) + (Pickup.Kind = 3))"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 520828513295621,
-					"parameters": {
-						"variable": "Damage",
-						"value": "Pickup.Kind = 1"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 360317019914312,
-					"parameters": {
-						"variable": "FireDelay",
-						"value": "(Pickup.Kind = 2) ? max(0.12, FireDelay * 0.88) : FireDelay"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 316376268949498,
-					"parameters": {
-						"variable": "BuffType",
-						"value": "((Pickup.Kind = 4) | (Pickup.Kind = 5)) ? (Pickup.Kind - 3) : BuffType"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 541781715844762,
-					"parameters": {
-						"variable": "BuffTime",
-						"value": "((Pickup.Kind = 4) | (Pickup.Kind = 5)) ? 6 : BuffTime"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 998258897512454,
-					"parameters": {
-						"variable": "Speed",
-						"value": "(Pickup.Kind = 6) * 40"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 892966169159332,
-					"parameters": {
-						"variable": "Shots",
-						"value": "Pickup.Kind = 7"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 883602616575645,
-					"parameters": {
-						"variable": "PierceLvl",
-						"value": "Pickup.Kind = 8"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 224928188509092,
-					"parameters": {
-						"variable": "Blades",
-						"value": "Pickup.Kind = 9"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 737360912998659,
-					"parameters": {
-						"variable": "Crit",
-						"value": "(Pickup.Kind = 10) * 10"
-					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "Msg",
-					"sid": 310312832407561,
-					"parameters": {
-						"text": "tokenat(ItemNames, Pickup.Kind, \"|\")"
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "Msg",
-					"sid": 465076103215996,
-					"parameters": {
-						"visibility": "visible"
-					}
-				},
-				{
-					"id": "destroy",
-					"objectClass": "Pickup",
-					"sid": 741678369250268
-				},
-				{
-					"id": "wait",
-					"objectClass": "System",
-					"sid": 840792579555129,
-					"parameters": {
-						"seconds": "2",
-						"use-timescale": true
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "Msg",
-					"sid": 126877707256259,
-					"parameters": {
-						"visibility": "invisible"
-					}
-				}
-			],
-			"sid": 450539367453556
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "is-overlapping-another-object",
-					"objectClass": "player",
-					"sid": 185055689382985,
-					"parameters": {
-						"object": "Enemy"
-					}
-				},
-				{
-					"id": "is-flashing",
-					"objectClass": "player",
-					"sid": 128988612515188,
-					"behaviorType": "Flash",
-					"isInverted": true
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 641136799426012,
-					"parameters": {
-						"variable": "RunOver",
-						"comparison": 0,
-						"value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Удар врага; мигание = секунда неуязвимости"
-				},
-				{
-					"id": "subtract-from-eventvar",
-					"objectClass": "System",
-					"sid": 743532876568807,
-					"parameters": {
-						"variable": "HP",
-						"value": "1"
-					}
-				},
-				{
-					"id": "flash",
-					"objectClass": "player",
-					"sid": 374259238315310,
-					"behaviorType": "Flash",
-					"parameters": {
-						"on-time": "0.1",
-						"off-time": "0.1",
-						"duration": "1"
-					}
-				},
-				{
-					"id": "shake",
-					"objectClass": "player",
-					"sid": 207713856040225,
-					"behaviorType": "СледитьЗа",
-					"parameters": {
-						"magnitude": "12",
-						"duration": "0.3",
-						"mode": "reducing-magnitude"
-					}
-				}
-			],
-			"sid": 967108462293896
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-collision-with-another-object",
-					"objectClass": "Shot",
-					"sid": 445043395237026,
-					"parameters": {
-						"object": "player"
-					}
-				},
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Shot",
-					"sid": 992507239634133,
-					"parameters": {
-						"instance-variable": "Hostile",
-						"comparison": 0,
-						"value": "1"
-					}
-				},
-				{
-					"id": "is-flashing",
-					"objectClass": "player",
-					"sid": 924689413649835,
-					"behaviorType": "Flash",
-					"isInverted": true
-				}
-			],
-			"actions": [
-				{
-					"id": "subtract-from-eventvar",
-					"objectClass": "System",
-					"sid": 924529718413085,
-					"parameters": {
-						"variable": "HP",
-						"value": "1"
-					}
-				},
-				{
-					"id": "flash",
-					"objectClass": "player",
-					"sid": 822028758814103,
-					"behaviorType": "Flash",
-					"parameters": {
-						"on-time": "0.1",
-						"off-time": "0.1",
-						"duration": "1"
-					}
-				},
-				{
-					"id": "shake",
-					"objectClass": "player",
-					"sid": 295335955341509,
-					"behaviorType": "СледитьЗа",
-					"parameters": {
-						"magnitude": "12",
-						"duration": "0.3",
-						"mode": "reducing-magnitude"
-					}
-				},
-				{
-					"id": "destroy",
-					"objectClass": "Shot",
-					"sid": 943099841440133
-				}
-			],
-			"sid": 303104042189214
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "every-x-seconds",
-					"objectClass": "System",
-					"sid": 849028755537098,
-					"parameters": {
-						"interval-seconds": "1.5"
-					}
-				},
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Enemy",
-					"sid": 784324450877035,
-					"parameters": {
-						"instance-variable": "Kind",
-						"comparison": 0,
-						"value": "1"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 388320010295230,
-					"parameters": {
-						"variable": "RunOver",
-						"comparison": 0,
-						"value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Стрелки стреляют в игрока"
-				},
-				{
-					"id": "spawn-another-object",
-					"objectClass": "Enemy",
-					"sid": 695004213155820,
-					"parameters": {
-						"object": "Shot",
-						"layer": "0",
-						"image-point": "0",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Shot",
-					"sid": 158691016211656,
-					"parameters": {
-						"instance-variable": "Hostile",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-animation-frame",
-					"objectClass": "Shot",
-					"sid": 310780913678237,
-					"parameters": {
-						"frame-number": "1"
-					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "Shot",
-					"sid": 584992596145156,
-					"parameters": {
-						"angle": "angle(Enemy.X, Enemy.Y, player.X, player.Y)"
-					}
-				}
-			],
-			"sid": 138688260366510
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "every-x-seconds",
-					"objectClass": "System",
-					"sid": 476436245799563,
-					"parameters": {
-						"interval-seconds": "3"
-					}
-				},
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Enemy",
-					"sid": 932870735595701,
-					"parameters": {
-						"instance-variable": "Kind",
-						"comparison": 0,
-						"value": "2"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 590518420191199,
-					"parameters": {
-						"variable": "RunOver",
-						"comparison": 0,
-						"value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Страж выпускает кольцо из 8 снарядов"
-				},
-				{
-					"id": "spawn-another-object",
-					"objectClass": "Enemy",
-					"sid": 794398731133280,
-					"parameters": {
-						"object": "Shot",
-						"layer": "0",
-						"image-point": "0",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Shot",
-					"sid": 681975349949599,
-					"parameters": {
-						"instance-variable": "Hostile",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-animation-frame",
-					"objectClass": "Shot",
-					"sid": 218927458705539,
-					"parameters": {
-						"frame-number": "1"
-					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "Shot",
-					"sid": 318512887427922,
-					"parameters": {
-						"angle": "0 + time * 40"
-					}
-				},
-				{
-					"id": "spawn-another-object",
-					"objectClass": "Enemy",
-					"sid": 275449319123924,
-					"parameters": {
-						"object": "Shot",
-						"layer": "0",
-						"image-point": "0",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Shot",
-					"sid": 174782144216962,
-					"parameters": {
-						"instance-variable": "Hostile",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-animation-frame",
-					"objectClass": "Shot",
-					"sid": 362365899890778,
-					"parameters": {
-						"frame-number": "1"
-					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "Shot",
-					"sid": 609834483540594,
-					"parameters": {
-						"angle": "45 + time * 40"
-					}
-				},
-				{
-					"id": "spawn-another-object",
-					"objectClass": "Enemy",
-					"sid": 476332345144946,
-					"parameters": {
-						"object": "Shot",
-						"layer": "0",
-						"image-point": "0",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Shot",
-					"sid": 533181101597142,
-					"parameters": {
-						"instance-variable": "Hostile",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-animation-frame",
-					"objectClass": "Shot",
-					"sid": 415731651778792,
-					"parameters": {
-						"frame-number": "1"
-					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "Shot",
-					"sid": 299900328150689,
-					"parameters": {
-						"angle": "90 + time * 40"
-					}
-				},
-				{
-					"id": "spawn-another-object",
-					"objectClass": "Enemy",
-					"sid": 744717628227289,
-					"parameters": {
-						"object": "Shot",
-						"layer": "0",
-						"image-point": "0",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Shot",
-					"sid": 217373754351196,
-					"parameters": {
-						"instance-variable": "Hostile",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-animation-frame",
-					"objectClass": "Shot",
-					"sid": 346428147742803,
-					"parameters": {
-						"frame-number": "1"
-					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "Shot",
-					"sid": 816202665252960,
-					"parameters": {
-						"angle": "135 + time * 40"
-					}
-				},
-				{
-					"id": "spawn-another-object",
-					"objectClass": "Enemy",
-					"sid": 393476567681300,
-					"parameters": {
-						"object": "Shot",
-						"layer": "0",
-						"image-point": "0",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Shot",
-					"sid": 795063391755004,
-					"parameters": {
-						"instance-variable": "Hostile",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-animation-frame",
-					"objectClass": "Shot",
-					"sid": 868120964721884,
-					"parameters": {
-						"frame-number": "1"
-					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "Shot",
-					"sid": 547011308762397,
-					"parameters": {
-						"angle": "180 + time * 40"
-					}
-				},
-				{
-					"id": "spawn-another-object",
-					"objectClass": "Enemy",
-					"sid": 560906736193289,
-					"parameters": {
-						"object": "Shot",
-						"layer": "0",
-						"image-point": "0",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Shot",
-					"sid": 409841022130760,
-					"parameters": {
-						"instance-variable": "Hostile",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-animation-frame",
-					"objectClass": "Shot",
-					"sid": 253667395794409,
-					"parameters": {
-						"frame-number": "1"
-					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "Shot",
-					"sid": 820081254536767,
-					"parameters": {
-						"angle": "225 + time * 40"
-					}
-				},
-				{
-					"id": "spawn-another-object",
-					"objectClass": "Enemy",
-					"sid": 325236319152549,
-					"parameters": {
-						"object": "Shot",
-						"layer": "0",
-						"image-point": "0",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Shot",
-					"sid": 927117879863427,
-					"parameters": {
-						"instance-variable": "Hostile",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-animation-frame",
-					"objectClass": "Shot",
-					"sid": 883088030166437,
-					"parameters": {
-						"frame-number": "1"
-					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "Shot",
-					"sid": 201598661486065,
-					"parameters": {
-						"angle": "270 + time * 40"
-					}
-				},
-				{
-					"id": "spawn-another-object",
-					"objectClass": "Enemy",
-					"sid": 526561541272337,
-					"parameters": {
-						"object": "Shot",
-						"layer": "0",
-						"image-point": "0",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Shot",
-					"sid": 963313127367678,
-					"parameters": {
-						"instance-variable": "Hostile",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-animation-frame",
-					"objectClass": "Shot",
-					"sid": 178531604223004,
-					"parameters": {
-						"frame-number": "1"
-					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "Shot",
-					"sid": 437631161617048,
-					"parameters": {
-						"angle": "315 + time * 40"
-					}
-				}
-			],
-			"sid": 238986304784015
+			"sid": 564697987552252
 		},
 		{
 			"eventType": "block",
@@ -2794,7 +509,7 @@
 				{
 					"id": "on-key-pressed",
 					"objectClass": "Keyboard",
-					"sid": 696463205800149,
+					"sid": 644350698288884,
 					"parameters": {
 						"key": 32
 					}
@@ -2802,30 +517,10 @@
 				{
 					"id": "compare-eventvar",
 					"objectClass": "System",
-					"sid": 979741662580076,
+					"sid": 623070619801121,
 					"parameters": {
 						"variable": "DashCD",
 						"comparison": 3,
-						"value": "0"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 177919696331418,
-					"parameters": {
-						"variable": "Choosing",
-						"comparison": 0,
-						"value": "0"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 447499764208859,
-					"parameters": {
-						"variable": "RunOver",
-						"comparison": 0,
 						"value": "0"
 					}
 				}
@@ -2833,12 +528,12 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Рывок (Пробел) туда, куда идёшь (или шёл последним): короткая неуязвимость"
+					"text": "Рывок (Пробел) в сторону ходьбы; «8 направлений» не пускает сквозь стены и камни"
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 511364281994845,
+					"sid": 782304277106624,
 					"parameters": {
 						"variable": "DashT",
 						"value": "0.15"
@@ -2847,27 +542,16 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 230096385335941,
+					"sid": 388256898536638,
 					"parameters": {
 						"variable": "DashCD",
 						"value": "0.7"
 					}
 				},
 				{
-					"id": "flash",
-					"objectClass": "player",
-					"sid": 273793130220299,
-					"behaviorType": "Flash",
-					"parameters": {
-						"on-time": "0.05",
-						"off-time": "0.05",
-						"duration": "0.35"
-					}
-				},
-				{
 					"id": "set-max-speed",
 					"objectClass": "player",
-					"sid": 456098913879705,
+					"sid": 628716506902407,
 					"behaviorType": "8Направлений",
 					"parameters": {
 						"max-speed": "1300"
@@ -2876,466 +560,75 @@
 				{
 					"id": "set-vector-x",
 					"objectClass": "player",
-					"sid": 137357846772233,
+					"sid": 337111195004853,
 					"behaviorType": "8Направлений",
 					"parameters": {
-						"vector-x": "1300 * cos(((MoveX <> 0) | (MoveY <> 0)) ? angle(0, 0, MoveX, MoveY) : LastAim)"
+						"vector-x": "1300 * cos(LastAim)"
 					}
 				},
 				{
 					"id": "set-vector-y",
 					"objectClass": "player",
-					"sid": 866848676097682,
+					"sid": 663777853538935,
 					"behaviorType": "8Направлений",
 					"parameters": {
-						"vector-y": "1300 * sin(((MoveX <> 0) | (MoveY <> 0)) ? angle(0, 0, MoveX, MoveY) : LastAim)"
+						"vector-y": "1300 * sin(LastAim)"
 					}
 				}
 			],
-			"sid": 432342493454863
+			"sid": 477326998684443
 		},
 		{
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "compare-two-values",
-					"objectClass": "System",
-					"sid": 284000256329139,
+					"id": "is-overlapping-another-object",
+					"objectClass": "player",
+					"sid": 740607588328975,
 					"parameters": {
-						"first-value": "(HP <= 0) | (Level >= 4)",
-						"comparison": 0,
-						"second-value": "1"
+						"object": "door"
 					}
-				},
-				{
-					"id": "trigger-once-while-true",
-					"objectClass": "System",
-					"sid": 309127686857128
 				}
 			],
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Конец забега: смерть (permadeath) или победа после 3 этажей"
+					"text": "Переход в соседнюю комнату. Dir: 0 лево, 1 верх, 2 низ, 3 право. Словарь Rooms глобальный и переживает перезапуск макета"
 				},
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 174650930362777,
+					"sid": 769824451349856,
 					"parameters": {
-						"variable": "RunOver",
-						"value": "1"
+						"variable": "EnterDir",
+						"value": "door.Dir"
 					}
 				},
 				{
-					"id": "destroy",
-					"objectClass": "Enemy",
-					"sid": 565987861210987
-				},
-				{
-					"type": "comment",
-					"text": "Отдельный текст EndText: его не прячут таймеры других сообщений; под ним затемнение экрана"
-				},
-				{
-					"id": "set-text",
-					"objectClass": "EndText",
-					"sid": 346786386692463,
-					"parameters": {
-						"text": "((HP <= 0) ? (\"Странник пал на этаже \" & Level) : \"Странник выбрался на свободу!\") & newline & \"Убито врагов: \" & Kills & newline & newline & \"Нажмите R, чтобы возродиться\""
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "Shade",
-					"sid": 140534163407363,
-					"parameters": {
-						"visibility": "visible"
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "EndText",
-					"sid": 216819045741047,
-					"parameters": {
-						"visibility": "visible"
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "Msg",
-					"sid": 608006817887143,
-					"parameters": {
-						"visibility": "invisible"
-					}
-				},
-				{
-					"id": "destroy",
-					"objectClass": "player",
-					"sid": 194763267470166
-				}
-			],
-			"sid": 730895495879903
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 500623626825675,
-					"parameters": {
-						"key": 82
-					}
-				},
-				{
-					"id": "compare-eventvar",
+					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 573843901164808,
+					"sid": 997770759059789,
 					"parameters": {
-						"variable": "RunOver",
-						"comparison": 0,
-						"value": "1"
+						"variable": "RoomX",
+						"value": "(door.Dir = 3) - (door.Dir = 0)"
 					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Новый забег"
 				},
 				{
-					"id": "clear",
-					"objectClass": "Rooms",
-					"sid": 414395310024449
-				},
-				{
-					"id": "reset-global-variables",
+					"id": "add-to-eventvar",
 					"objectClass": "System",
-					"sid": 278042558815244,
+					"sid": 416794001775876,
 					"parameters": {
-						"reset-static": false
+						"variable": "RoomY",
+						"value": "(door.Dir = 2) - (door.Dir = 1)"
 					}
 				},
 				{
 					"id": "restart-layout",
 					"objectClass": "System",
-					"sid": 634625405944264
+					"sid": 223728319720826
 				}
 			],
-			"sid": 152949986770741
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-two-values",
-					"objectClass": "System",
-					"sid": 377003081542239,
-					"parameters": {
-						"first-value": "XP",
-						"comparison": 5,
-						"second-value": "XPNeed"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 823781930529734,
-					"parameters": {
-						"variable": "Choosing",
-						"comparison": 0,
-						"value": "0"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 475398316669551,
-					"parameters": {
-						"variable": "RunOver",
-						"comparison": 0,
-						"value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Новый уровень: пауза и выбор из 3 улучшений (атака / темп / выживание)"
-				},
-				{
-					"id": "subtract-from-eventvar",
-					"objectClass": "System",
-					"sid": 114146038712485,
-					"parameters": {
-						"variable": "XP",
-						"value": "XPNeed"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 234823626901244,
-					"parameters": {
-						"variable": "XPNeed",
-						"value": "5"
-					}
-				},
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 237938287132884,
-					"parameters": {
-						"variable": "PlayerLvl",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 116922380932762,
-					"parameters": {
-						"variable": "Opts",
-						"value": "choose(1, 7, 10) & \",\" & choose(2, 8, 9) & \",\" & choose(0, 3, 6)"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 451442149326019,
-					"parameters": {
-						"variable": "Choosing",
-						"value": "1"
-					}
-				},
-				{
-					"id": "set-time-scale",
-					"objectClass": "System",
-					"sid": 554611457589757,
-					"parameters": {
-						"time-scale": "0"
-					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "Msg",
-					"sid": 570232375118900,
-					"parameters": {
-						"text": "\"НОВЫЙ УРОВЕНЬ \" & PlayerLvl & \"! Выбери улучшение:\" & newline & \"1 — \" & tokenat(ItemNames, int(tokenat(Opts, 0, \",\")), \"|\") & newline & \"2 — \" & tokenat(ItemNames, int(tokenat(Opts, 1, \",\")), \"|\") & newline & \"3 — \" & tokenat(ItemNames, int(tokenat(Opts, 2, \",\")), \"|\")"
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "Msg",
-					"sid": 330925457840502,
-					"parameters": {
-						"visibility": "visible"
-					}
-				}
-			],
-			"sid": 703065132309638
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-any-key-pressed",
-					"objectClass": "Keyboard",
-					"sid": 747022877798888
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 698761397992836,
-					"parameters": {
-						"variable": "Choosing",
-						"comparison": 0,
-						"value": "1"
-					}
-				},
-				{
-					"id": "compare-two-values",
-					"objectClass": "System",
-					"sid": 538079022094351,
-					"parameters": {
-						"first-value": "(Keyboard.LastKeyCode >= 49) & (Keyboard.LastKeyCode <= 51)",
-						"comparison": 0,
-						"second-value": "1"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Выбор 1-3: улучшение выдаётся предметом прямо под игроком"
-				},
-				{
-					"id": "create-object",
-					"objectClass": "System",
-					"sid": 416722380545279,
-					"parameters": {
-						"object-to-create": "Pickup",
-						"layer": "0",
-						"x": "player.X",
-						"y": "player.Y",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				},
-				{
-					"id": "set-instvar-value",
-					"objectClass": "Pickup",
-					"sid": 341534464992600,
-					"parameters": {
-						"instance-variable": "Kind",
-						"value": "int(tokenat(Opts, Keyboard.LastKeyCode - 49, \",\"))"
-					}
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 320257653305246,
-					"parameters": {
-						"variable": "Choosing",
-						"value": "0"
-					}
-				},
-				{
-					"id": "set-time-scale",
-					"objectClass": "System",
-					"sid": 475418503197103,
-					"parameters": {
-						"time-scale": "1"
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "Msg",
-					"sid": 173189893676188,
-					"parameters": {
-						"visibility": "invisible"
-					}
-				}
-			],
-			"sid": 337779678941736
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-two-values",
-					"objectClass": "System",
-					"sid": 526761467689392,
-					"parameters": {
-						"first-value": "Blade.Count",
-						"comparison": 2,
-						"second-value": "Blades"
-					}
-				},
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 919753008492312,
-					"parameters": {
-						"variable": "RunOver",
-						"comparison": 0,
-						"value": "0"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "Клинки-спутники: добираем до числа Blades (и в каждой новой комнате)"
-				},
-				{
-					"id": "create-object",
-					"objectClass": "System",
-					"sid": 238111954145722,
-					"parameters": {
-						"object-to-create": "Blade",
-						"layer": "0",
-						"x": "player.X",
-						"y": "player.Y",
-						"create-hierarchy": false,
-						"template-name": "\"\""
-					}
-				}
-			],
-			"sid": 344293831469637
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "is-overlapping-another-object",
-					"objectClass": "Blade",
-					"sid": 484068948374157,
-					"parameters": {
-						"object": "Enemy"
-					}
-				},
-				{
-					"id": "is-flashing",
-					"objectClass": "Enemy",
-					"sid": 909381225812767,
-					"behaviorType": "Flash",
-					"isInverted": true
-				}
-			],
-			"actions": [
-				{
-					"id": "subtract-from-instvar",
-					"objectClass": "Enemy",
-					"sid": 111240873199369,
-					"parameters": {
-						"instance-variable": "HP",
-						"value": "max(1, Damage / 2)"
-					}
-				},
-				{
-					"id": "flash",
-					"objectClass": "Enemy",
-					"sid": 560990233325545,
-					"behaviorType": "Flash",
-					"parameters": {
-						"on-time": "0.05",
-						"off-time": "0.05",
-						"duration": "0.35"
-					}
-				}
-			],
-			"sid": 740307580297943
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "is-overlapping-another-object",
-					"objectClass": "player",
-					"sid": 399165265303212,
-					"parameters": {
-						"object": "Gem"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "add-to-eventvar",
-					"objectClass": "System",
-					"sid": 684757428655897,
-					"parameters": {
-						"variable": "XP",
-						"value": "Gem.Value"
-					}
-				},
-				{
-					"id": "destroy",
-					"objectClass": "Gem",
-					"sid": 786775132303414
-				}
-			],
-			"sid": 843362074082734
+			"sid": 217640007810143
 		}
 	],
 	"sid": 159320408848521

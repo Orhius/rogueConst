@@ -85,17 +85,8 @@
 			"wall",
 			"Keyboard",
 			"Rooms",
-			"Enemy",
 			"Rock",
-			"Pickup",
-			"Stairs",
-			"HUD",
-			"Msg",
-			"Blade",
-			"Gem",
-			"Shot",
-			"EndText",
-			"Shade"
+			"HUD"
 		],
 		"subfolders": []
 	},
